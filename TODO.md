@@ -1,6 +1,8 @@
 # COMP3008: Big Data Analytics
 
-- [ ] Write in Larex
+- [ ] Write in LaTeX
+- [ ] Go as far as conceptually as possible, as far complex as the subject goes
+- [ ] Make the code work ASAP and start talking about it using what's learnt in the module
 
 **Strategic plan for first-class achievement (70%+)**
 
@@ -25,7 +27,7 @@
 - [ ] Include index creation commands
 - [ ] Data model: Artist -> Track -> Chart Position relationships
 
-**Exercises 2-4 (5 marks each) - Cypher Queries[ ] **
+**Exercises 2-4 (5 marks each) - Cypher Queries [ ]**
 
 * [ ] Exercise 2: Artists with 4+ weeks at #1 (descending order)
 * [ ] Exercise 3: Ed Sheeran tracks average valence
