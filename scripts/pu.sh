@@ -1,4 +1,5 @@
 #!/bin/bash
+read -p "3008-CW: Enter commit message: " msg
 git add .
-git commit -m 'update'
-git push origin main
+git commit -m "$msg"
+git push -f origin main

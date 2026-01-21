@@ -1,0 +1,46 @@
+CREATE
+  (montague:Character:House_of_Montague {name: 'Montague'}),
+  (romeo:Character:House_of_Montague {name: 'Romeo'}),
+  (benvolio:Character:House_of_Montague {name: 'Benvolio'}),
+  (capulet:Character:House_of_Capulet {name: 'Capulet'}),
+  (juliet:Character:House_of_Capulet {name: 'Juliet'}),
+  (tybalt:Character:House_of_Capulet {name: 'Tybalt'}),
+  (prince_escalus:Character:House_of_Verona {name: 'Prince Escalus'}),
+  (paris:Character:House_of_Verona {name: 'Paris'}),
+  (mercutio:Character:House_of_Verona {name: 'Mercutio'}),
+  (friar_lawrence:Character:Franciscans {name: 'Friar Lawrence'}),
+  (the_nurse:Character:Works_For_House_of_Capulet {name: 'The Nurse'})
+CREATE (juliet)-[:FRIENDS_WITH]->(tybalt)
+CREATE (juliet)<-[:FRIENDS_WITH]-(tybalt)
+CREATE (juliet)-[:FRIENDS_WITH]->(capulet)
+CREATE (juliet)<-[:FRIENDS_WITH]-(capulet)
+CREATE (juliet)-[:FRIENDS_WITH]->(friar_lawrence)
+CREATE (juliet)<-[:FRIENDS_WITH]-(friar_lawrence)
+CREATE (tybalt)-[:FRIENDS_WITH]->(capulet)
+CREATE (tybalt)<-[:FRIENDS_WITH]-(capulet)
+CREATE (romeo)-[:FRIENDS_WITH]->(juliet)
+CREATE (romeo)<-[:FRIENDS_WITH]-(juliet)
+CREATE (romeo)-[:FRIENDS_WITH]->(friar_lawrence)
+CREATE (romeo)<-[:FRIENDS_WITH]-(friar_lawrence)
+CREATE (romeo)-[:FRIENDS_WITH]->(benvolio)
+CREATE (romeo)<-[:FRIENDS_WITH]-(benvolio)
+CREATE (romeo)-[:FRIENDS_WITH]->(montague)
+CREATE (romeo)<-[:FRIENDS_WITH]-(montague)
+CREATE (romeo)-[:FRIENDS_WITH]->(mercutio)
+CREATE (romeo)<-[:FRIENDS_WITH]-(mercutio)
+CREATE (montague)-[:FRIENDS_WITH]->(prince_escalus)
+CREATE (montague)<-[:FRIENDS_WITH]-(prince_escalus)
+CREATE (capulet)-[:FRIENDS_WITH]->(prince_escalus)
+CREATE (capulet)<-[:FRIENDS_WITH]-(prince_escalus)
+CREATE (capulet)-[:FRIENDS_WITH]->(paris)
+CREATE (capulet)<-[:FRIENDS_WITH]-(paris)
+CREATE (mercutio)-[:FRIENDS_WITH]->(prince_escalus)
+CREATE (mercutio)<-[:FRIENDS_WITH]-(prince_escalus)
+CREATE (mercutio)-[:FRIENDS_WITH]->(paris)
+CREATE (mercutio)<-[:FRIENDS_WITH]-(paris)
+CREATE (paris)-[:FRIENDS_WITH]->(prince_escalus)
+CREATE (paris)<-[:FRIENDS_WITH]-(prince_escalus)
+CREATE (the_nurse)-[:FRIENDS_WITH]->(juliet)
+CREATE (the_nurse)<-[:FRIENDS_WITH]-(juliet)
+  
+ 
