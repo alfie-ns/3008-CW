@@ -101,7 +101,7 @@ MATCH (p:Person)-[r]-(bossman:Person {name: 'Bossman'})
 RETURN p.name, type(r) AS relationship
 ```
 
-### 2. Wildcard query - all names and relationships between all people
+### 2. Wildcard query; all names and relationships between all people
 
 ```cypher
 MATCH (a:Person)-[r]->(b:Person)

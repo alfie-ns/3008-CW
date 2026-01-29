@@ -9,49 +9,49 @@ This creates 133 actors, 38 movies and 253 relationships.
 
 ### Verify the dataset
 
-**Count Actor nodes (should be 133):**
+**Count Actor nodes:**
 ```cypher
 MATCH (a:Actor)
 RETURN COUNT(a) AS ACTORS
 ```
 
-**Count Movie nodes (should be 38):**
+**Count Movie nodes:**
 ```cypher
 MATCH (m:Movie)
 RETURN COUNT(m) AS MOVIES
 ```
 
-**Count DIRECTED relationships (should be 44):**
+**Count DIRECTED relationships:**
 ```cypher
 MATCH ()-[r:DIRECTED]->()
 RETURN COUNT(r) AS DIRECTED_MOVIES
 ```
 
-**Count ACTED_IN relationships (should be 172):**
+**Count ACTED_IN relationships:**
 ```cypher
 MATCH ()-[r:ACTED_IN]->()
 RETURN COUNT(r) AS ACTED_IN
 ```
 
-**Count PRODUCED relationships (should be 15):**
+**Count PRODUCED relationships:**
 ```cypher
 MATCH ()-[r:PRODUCED]->()
 RETURN COUNT(r) AS PRODUCED
 ```
 
-**Count FOLLOWS relationships (should be 3):**
+**Count FOLLOWS relationships:**
 ```cypher
 MATCH ()-[r:FOLLOWS]->()
 RETURN COUNT(r) AS FOLLOWS
 ```
 
-**Count REVIEWED relationships (should be 9):**
+**Count REVIEWED relationships:**
 ```cypher
 MATCH ()-[r:REVIEWED]->()
 RETURN COUNT(r) AS REVIEWED
 ```
 
-**Count WROTE relationships (should be 10):**
+**Count WROTE relationships:**
 ```cypher
 MATCH ()-[r:WROTE]->()
 RETURN COUNT(r) AS WROTE
@@ -64,7 +64,7 @@ MATCH (helen:Actor {name: 'Helen Hunt'})-[:ACTED_IN]->(m:Movie)
 RETURN helen, m
 ```
 
-### Find all co-actors of Helen Hunt (7 actors)
+### Find all co-actors of Helen Hunt
 
 ```cypher
 MATCH (helen:Actor {name: 'Helen Hunt'})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(coActor:Actor)
@@ -78,7 +78,7 @@ MATCH (helen:Actor {name: 'Helen Hunt'})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(co
 RETURN helen, m, coActor
 ```
 
-### Find Helen Hunt's co-co-actors (61 records)
+### Find Helen Hunt's co-co-actors
 
 These are actors who acted with a co-actor of Helen Hunt but have NOT acted with Helen Hunt directly.
 
@@ -159,14 +159,14 @@ MATCH (n:House_of_Verona)-[r]-(other)
 RETURN n, r, other
 ```
 
-### Count mutual friends between Mercutio and Benvolio (should be 1)
+### Count mutual friends between Mercutio and Benvolio
 
 ```cypher
 MATCH (mercutio:Character {name: 'Mercutio'})-[:FRIENDS_WITH]-(mutual)-[:FRIENDS_WITH]-(benvolio:Character {name: 'Benvolio'})
 RETURN 'Mercutio and Benvolio' AS pair, COUNT(DISTINCT mutual) AS mutual_friends
 ```
 
-### Count mutual friends between Mercutio and Capulet (should be 2)
+### Count mutual friends between Mercutio and Capulet
 
 ```cypher
 MATCH (mercutio:Character {name: 'Mercutio'})-[:FRIENDS_WITH]-(mutual)-[:FRIENDS_WITH]-(capulet:Character {name: 'Capulet'})
