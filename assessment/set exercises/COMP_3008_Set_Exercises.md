@@ -29,6 +29,20 @@ header-includes:
         showstringspaces=false
       }
 ---
+# TODO
+
+- [ ] remember to utilise the `lecture-notes.md` from ALL the relevant lectures notes, dynamically whilst making the coursework
+- [ ] Go as far as conceptually as possible, as far complex as the subject goes
+- [ ] Make the code work ASAP and start talking about it using what's learnt in the module
+
+## Set-exercise 1
+
+## Set-exercise 2
+
+## Set-exercise 3
+
+## Set-exercise 4
+
 # Appendices
 
 ## Appendix A: ...
