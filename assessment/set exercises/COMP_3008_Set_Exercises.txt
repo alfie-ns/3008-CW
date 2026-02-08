@@ -21,7 +21,7 @@ Neo4j: a graph database management system that store data as nodes (entities) an
 SET-EXERCISE 1.
 Q: "Create a Neo4j database to store the data comprised in the CSV files. The database should respect the data model displayed in the example in the figure below, please note that the image below has had some nodes hidden for clarity. You have to provide all the commands needed to create the database and populate it with the data in the CSV files, and you must provide them in the exact order you propose to execute them. If you create indexes, you must also include the commands for index creation. Your database will be recreated, and the only way to do so is by following the commands that you will provide, in the order in which you provide them."
 
-The database respects the specified data-model, with non-property releationships as abiding by Dr Ansell's instructions. The intermediate nodes i.e. `Entry` and `Vote`, store the detailed attributes of which would otherwise be properties on relationships.
+The database respects the specified data-model, with non-property relationships as abiding by Dr Ansell's instructions. The intermediate nodes i.e. `Entry` and `Vote`, store the detailed attributes of which would otherwise be properties on relationships.
 
 1.1 Data Model
 
@@ -40,19 +40,19 @@ Execute the commands that follow in the exact order shown to recreate the databa
     1.2.1a- **Year Constraint**
     ```
         CREATE CONSTRAINT year_unique IF NOT EXISTS
-        FOR(y:Year)REQUIRE y.year IS UNIQUE;
+        FOR (y:Year) REQUIRE y.year IS UNIQUE;
     ```
 
     1.2.1b- ### Country Constraint
     ```
         CREATE CONSTRAINT country_unique IF NOT EXISTS
-        FOR(c:Country)REQUIRE c.name IS UNIQUE;
+        FOR (c:Country) REQUIRE c.name IS UNIQUE;
     ```
 
     1.2.1c- ### Location Constraint
     ```
         CREATE CONSTRAINT location_unique IF NOT EXISTS
-        FOR(l:Location)REQUIRE l.name IS UNIQUE;
+        FOR (l:Location) REQUIRE l.name IS UNIQUE;
     ```
 
 1.2.2- ## Load Winners 
@@ -78,7 +78,7 @@ MERGE (e)-[:PERFORMED_BY]->(c);
 1.2.3- Load host countries (creates HOSTED_BY relationships)
 ```
     LOAD CSV WITH HEADERS FROM 'file:///eurovision_location.csv' AS row
-    MATCH (y:Year {year: toInteger(row.Year)})
+    MERGE (y:Year {year: toInteger(row.Year)})
     MERGE (host:Country {name: toLower(trim(row.Country))})
     MERGE (l:Location {name: toLower(trim(row.Location))})
     MERGE (y)-[:HOSTED_BY]->(host)
@@ -105,7 +105,7 @@ MERGE (e)-[:PERFORMED_BY]->(c);
 
 1.3 Design Rationale
 
-Why you want relationship properties despite Dr. Ansells suggestion/instruction: intermediate nodes Entry and Vote store what would otherwise sit as key-value pairs on edges. For example, without the Vote node, voting would be modelled as:
+Why you want relationship properties despite Dr. Ansell's suggestion/instruction: intermediate nodes Entry and Vote store what would otherwise sit as key-value pairs on edges. For example, without the Vote node, voting would be modelled as:
 
 Country-[:VOTED {points: 12, points_type: "jury"}]->(Country)
 
@@ -116,7 +116,7 @@ wherein year is buried on that edge. That works syntactically but properties on 
 SET-EXERCISE 2.
 Q: "Produce a Neo4j query to list all the countries that have won the competition more than twice. The query should include the country and be listed in descending order, that is the country which has won the greatest number of times should be listed first, followed by the country which has the second greatest, and so on. Your answer must show the query followed by the result with the columns appropriately named."
 
-The below takes the database and formats it in a way that can be interogated, i.e., it can be...
+The below takes the database and formats it in a way that can be interrogated, i.e., it can be...
 
     MATCH(y:Year)-[:Winning_Entry]->(e:Entry)-[:PERFORMED_BY]->(c:Country)
     WITH c.name AS Country, count(y) AS Wins
@@ -134,7 +134,7 @@ Q: "Produce a Neo4j query to find all the host countries which then also went on
     ORDER BY Year ASC
 
 SET-EXERCISE 4.
-Q: "Produce a Neo4j query to identify all the persistent friendships between countries. The query should list both countries and the number of points given. The query result should be listed in phabetical order by the country giving the points. You should submit the query and the result with the columns appropriately named."
+Q: "Produce a Neo4j query to identify all the persistent friendships between countries. The query should list both countries and the number of points given. The query result should be listed in alphabetical order by the country giving the points. You should submit the query and the result with the columns appropriately named."
 
     MATCH (a:Country)-[:GAVE]->(v1:Vote)-[:TO]->(b:Country),
       (y1:Year)-[:Voting_Result]->(v1),
@@ -146,7 +146,7 @@ RETURN a.name AS Country_Giving, b.name AS Country_Receiving, PointsGiven
 ORDER BY Country_Giving ASC
 
 
-The bidirectional matching ensures only mutual voting relationships are returned i.e. both countries have given points to the other, hence the *friendship*; the aggregated total then reflects the strength of that mutual relationship over the dataset’s timespan.
+The consecutive-year matching ensures only persistent voting relationships are returned i.e. country A has given points to country B in a given year and in the year before (y2.year = y1.year - 1), hence the *friendship*; the aggregated total then reflects the strength of that persistent relationship over the dataset's timespan.
 
 ---
 
@@ -156,7 +156,7 @@ REFERENCES
 
 APPENDIX
 
-APPENDIX A: AI DECLERATION: (modified greatly reduced template included despite non-use)
+APPENDIX A: AI DECLARATION: (modified greatly reduced template included despite non-use)
 
 I declare that I've used \textbf{no} AI tools listed below whilst preparing this assessment. I have read and understood the University of Plymouth's policy on the use of AI tools in assessment and confirm that my use falls within the coursework's allowed categories, i.e. 3008 set exercises's non-usage.
 
