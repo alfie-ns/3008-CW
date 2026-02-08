@@ -5,6 +5,8 @@ Version: 2026.01.3 (VERIFY IS CORRECT VERSION)??
 
 REMOVE BEFORE SUBMISSION:
 
+- [ ] change this to .txt file
+
 The "Year Before" Pattern: The central hint for the problem is to look at data from "A year ago" or "The year before." You must identify a specific pattern linked to this timeframe.
 - No Domain Knowledge Required: You do not need to know anything about Eurovision to solve the problem (the lecturer explicitly states she doesn't either).
 - The "Pony" Instruction: You are directed to "Make your pony better" (likely a transcription error for "Make your point better" or "Make your program better").
@@ -15,7 +17,7 @@ REMOVE REMOVE REMOVE BEFORE SUBMISSION
 
 —---------------------------------------------------------------------------------------
 
-Neo4j: a graph database management system...
+Neo4j: a graph database management system that stores data as nodes (entities) and relationships (connections between entities), thereby enabling efficient traversal of highly connected datasets wherein traditional relational joins would instead be computationally expensive. Unlike tabular databases, Neo4j represents data as a property graph; nodes and relationships can hold key-value properties; queries are expressed in Cypher, a declarative pattern-matching language.
 
 SET-EXERCISE 1.
 Q: "Create a Neo4j database to store the data comprised in the CSV files. The database should respect the data model displayed in the example in the figure below, please note that the image below has had some nodes hidden for clarity. You have to provide all the commands needed to create the database and populate it with the data in the CSV files, and you must provide them in the exact order you propose to execute them. If you create indexes, you must also include the commands for index creation. Your database will be recreated, and the only way to do so is by following the commands that you will provide, in the order in which you provide them."
@@ -131,11 +133,14 @@ SET-EXERCISE 4.
 Q: "Produce a Neo4j query to identify all the persistent friendships between countries. The query should list both countries and the number of points given. The query result should be listed in phabetical order by the country giving the points. You should submit the query and the result with the columns appropriately named."
 
     MATCH (a:Country)-[:GAVE]->(v1:Vote)-[:TO]->(b:Country),
-      (b)-[:GAVE]->(v2:Vote)-[:TO]->(a)
+      (y1:Year)-[:Voting_Result]->(v1),
+      (a)-[:GAVE]->(v2:Vote)-[:TO]->(b),
+      (y2:Year)-[:Voting_Result]->(v2)
+WHERE y2.year = y1.year - 1
 WITH a, b, sum(v1.points) AS PointsGiven
-WHERE a.name < b.name
-RETURN a.name AS Country_A, b.name AS Country_B, PointsGiven
-ORDER BY Country_A ASC
+RETURN a.name AS Country_Giving, b.name AS Country_Receiving, PointsGiven
+ORDER BY Country_Giving ASC
+
 
 The bidirectional matching ensures only mutual voting relationships are returned i.e. both countries have given points to the other, hence the *friendship*; the aggregated total then reflects the strength of that mutual relationship over the dataset’s timespan.
 
