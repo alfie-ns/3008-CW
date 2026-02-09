@@ -40,19 +40,19 @@ Execute the commands that follow in the exact order shown to recreate the databa
     1.2.1a- **Year Constraint**
     ```
         CREATE CONSTRAINT year_unique IF NOT EXISTS
-        FOR (y:Year) REQUIRE y.year IS UNIQUE;
+        FOR(y:Year) REQUIRE y.year IS UNIQUE;
     ```
 
     1.2.1b- ### Country Constraint
     ```
         CREATE CONSTRAINT country_unique IF NOT EXISTS
-        FOR (c:Country) REQUIRE c.name IS UNIQUE;
+        FOR(c:Country) REQUIRE c.name IS UNIQUE;
     ```
 
     1.2.1c- ### Location Constraint
     ```
         CREATE CONSTRAINT location_unique IF NOT EXISTS
-        FOR (l:Location) REQUIRE l.name IS UNIQUE;
+        FOR(l:Location) REQUIRE l.name IS UNIQUE;
     ```
 
 1.2.2- ## Load Winners 
