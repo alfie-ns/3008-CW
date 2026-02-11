@@ -65,6 +65,7 @@ Ensure that any plots included are legible at 100% zoom.
 - Appendix with completed Generative Al Declaratio
 
 Inline with the indicated acceptable level of Al use above, the following uses are acceptable:
+
 - A1 - Idea Generation and Problem Exploration
 - A5 - Language Refinement
 - A7 - Code Generation for Learning Purposes
@@ -72,6 +73,7 @@ Inline with the indicated acceptable level of Al use above, the following uses a
 **Assessment Criteria:**
 
 The following marking scheme will be used for this part of the assessment:
+
 - Literature review (10 Marks)
 - Overview of the methods used in report (10 Marks)
 - Pre-processing of the data (10 Marks)
@@ -82,14 +84,14 @@ The following marking scheme will be used for this part of the assessment:
 
 An illustration of the feedback template is presented in Table 3.
 
-| | Criteria | Weighting |
-| :--- | :--- | :--- |
-| 1 | Is there a properly constructed reference list and are the elements of such a list cited appropriately in the report? | 5 marks |
-| 2 | Is the research carried out appropriate in terms of breadth and depth? The relation between the cited sources and the report are clearly explained. | 10 marks |
-| 3 | Does the report provide an overview of the specific methods (at least 3 exploratory methods and at least 2 predictive methods) used to analyse the data, and is this clearly and explicitly based upon evidence and citations from the literature? | 10 marks |
-| 4 | Does the report explain how the data has been pre-processed and the effects of this? | 10 marks |
-| 5 | Does the report provide a detailed analysis that adequately describes the results of applying the different methods? Is the solution supported by appropriate evidence? | 20 marks |
-| 6 | Does the report propose insights and recommendations? Does the report identify reasons for these? Is this clearly and explicitly supported by evidence? Are such examples presented and discussed in sufficient depth? | 10 marks |
-| 7 | Is there a set of conclusions, and do they provide a reasonable summary – at an appropriate level of abstraction – based upon the contents of the report? | 5 marks |
+|   | Criteria                                                                                                                                                                                                                                           | Weighting |
+| :- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------- |
+| 1 | Is there a properly constructed reference list and are the elements of such a list cited appropriately in the report?                                                                                                                              | 5 marks   |
+| 2 | Is the research carried out appropriate in terms of breadth and depth? The relation between the cited sources and the report are clearly explained.                                                                                                | 10 marks  |
+| 3 | Does the report provide an overview of the specific methods (at least 3 exploratory methods and at least 2 predictive methods) used to analyse the data, and is this clearly and explicitly based upon evidence and citations from the literature? | 10 marks  |
+| 4 | Does the report explain how the data has been pre-processed and the effects of this?                                                                                                                                                               | 10 marks  |
+| 5 | Does the report provide a detailed analysis that adequately describes the results of applying the different methods? Is the solution supported by appropriate evidence?                                                                            | 20 marks  |
+| 6 | Does the report propose insights and recommendations? Does the report identify reasons for these? Is this clearly and explicitly supported by evidence? Are such examples presented and discussed in sufficient depth?                             | 10 marks  |
+| 7 | Is there a set of conclusions, and do they provide a reasonable summary – at an appropriate level of abstraction – based upon the contents of the report?                                                                                        | 5 marks   |
 
 Marking criteria to work towards: (70%+) The quality of work is outstanding with no significant flaws. It demonstrates a high level of subject knowledge and competence; personal thoroughness, effort and independent learning; and possibly significant additional analytical/critical thought. Well

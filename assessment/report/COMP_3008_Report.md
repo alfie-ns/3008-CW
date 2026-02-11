@@ -30,7 +30,7 @@ header-includes:
       }
 ---
 # TODO
-
+- [ ] args and kwargs
 - [ ] concise-as-possible alike COMP_3003
 - [ ] LaTeX diagram that has fully context within cw
 - [ ] rember to utilise the `lecture-notes.md` from ALL the relevant lectures, dynamically whilst making the coursework

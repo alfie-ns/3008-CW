@@ -1,0 +1,819 @@
+3008-2
+
+Transcript
+
+Speaker 1:
+
+A year ago. What? The year before. Okay, that's doable now. I was like, what are we supposed to do? Thank you. Yes. You understand what I'm hinting at? So you understand the pattern I'm hinting. Yeah, yeah, yeah, yeah. Perfect. So, obviously I can't tell you the answer, but I can.
+
+I can hint. It doesn't help that I don't know anything about Eurovision.
+
+It's all right. Make your pony better. Ryan had to ask a question about that as well. Of course he has. Of course he has. And then he then claimed afterwards that he knew this, but, you know, One.
+
+Speaker 2:
+
+Laurie, please, can you briefly say again what you were saying about the coursework.
+
+Speaker 3:
+
+In the email?
+
+Speaker 2:
+
+Oh, no. What you're saying to those girls.
+
+Speaker 3:
+
+Yeah, they're doing an announcement, and I'll record it.
+
+So everybody, thank you.
+
+Speaker 4:
+
+About the coursework, specifically exercise three.
+
+So I'm not obviously going to tell you the answer, because I can't.
+
+But what I'm going to do is drop some hints about Eurovision folklore, I suppose.
+
+So, Eurovision Slam contest, the next country, because in your data set, you've got the winning country and you have the location as the city, I do not expect you to add an additional column.
+
+You've got all the information you need. The bit of information you are potentially lacking if you are not a Eurovision fan, is that the next host city is in the country that won the previous year.
+
+Okay, so what you need to think about is for a country to win in their host city, host country, you need to think about what that country needs to do the year before.
+
+Okay, so if Germany win the Eurovision Song Contest in France, Germany will host the next one.
+
+Okay, so what does Germany need to do to win that year?
+
+Basically, that's the pattern you're looking for.
+
+Country wins, they host it next. Has that dropped a big enough hint for everybody to know what pattern they're looking for?
+
+And getting some nods. Excellent. Okay, so, yeah, that's the information you're looking for and it is in that database.
+
+So you don't need to add anything. Okay. Okay. So for today's topic, we're going to look at recommender systems, or AKA how on earth does the Internet know what I am thinking?
+
+Spoiler alert. It doesn't know what you're thinking, it's just making a really clever guess.
+
+So for today, we're going to look at recommender systems.
+
+We're going to look at a slightly different one on Tuesday called influence scoring, but today we're going to look at them a bit more broadly.
+
+So by the end of the day, you'll be able to explain what we actually mean by a recommender system.
+
+You'll be able to explain and describe some types of recommender systems.
+
+And we, as always, we'll look into the issues with recommender systems, because nothing is perfect.
+
+And I always like to throw the but and the spanner in the works whenever I teach anything.
+
+I don't want to have illusions that everything is perfect and works, because it doesn't.
+
+So essentially what they're doing is they're filtering.
+
+They're filtering systems, but they're really, really clever filtering systems.
+
+And different types of recommendations can be editorial ones.
+
+So where you've gone, oh, I like this song, I like this song, I like this one, I don't like that one, I like this one, I kind of like this one.
+
+So yeah, I'm in the mood for that one. I'll pop that one in. So your favourites, you're essential items when you pack in your suitcase, sun hat, sunglasses, sunscreen, bikini, towel.
+
+You know the important bits, exchange money, that kind of thing.
+
+Or top tens. Usually we can do simple aggregates. So most popular think the chart, have bought stuff so it's going there.
+
+Or recent uploads done on a temporal basis. Or they can be tailored to an individual. Well, or as tailored as they can be to an individual.
+
+And the best recommender systems will provide this information for you, they will provide suggestions that you are looking for.
+
+So playlist generators, if you go, anyone's got Spotify?
+
+I know I have, it's been hijacked by my daughter, which is fantastic.
+
+So whenever you slip extra songs into your playlist like you might like, I keep getting Taylor Swift.
+
+Thanks, Phoebe. But yes, that's how they're doing it. They're looking at your playlist, they're going, oh, this is a similar genre, this is a similar maybe style or temporal period for it.
+
+And they just slip that in there and hopefully try to catch you.
+
+But what we need for a recommender system is we need candidate generation.
+
+So we need to know something either about the user or about the products.
+
+To begin with there needs to be some sort of scoring system.
+
+So we need to know which items are better for some people or which songs are more appropriate for some people and then we need to be able to re rank them.
+
+So if we're given new bits of information, we need to be able to go, okay, right, let's rejig that and resort and make sure we keeping the customer satisfied.
+
+So any of you who are creating maybe some software to.
+
+I think there was one last year looking at cyber security training.
+
+A recommended system is something you might want to implement to think about.
+
+The user did quite badly on this area of training.
+
+Maybe we could recommend these courses or recommend this action.
+
+So if you're doing anything in your final year project where you're looking at training or you're looking at creating an E commerce site, recommend system is something you might want to think about incorporating into that.
+
+So who uses it? Netflix. Yeah, they love a good recommender system. When you finish watching something, oh, you may like this and it starts playing the.
+
+The start of that film, you're like, no. Why? Why? No, stop. But they love a recommender. Amazon. When you're scrolling on Amazon, you get the bar at the bottom.
+
+People who bought this product also looked at recommender system And Facebook also uses it when you're that really annoying thing that comes.
+
+You might want to connect with this person and you're like, no, I haven't asked them, so why would I want to?
+
+Don't tell me I need to. I don't want to. There's a reason that we're not connected. Connected already, thank you very much. But still Facebook is pushy and tells us that we should connect with these people.
+
+Why are recommended systems earlier important?
+
+Well, actually 2/3 of the movies that are watched by Netflix customers are from the recommender that they do.
+
+Whether that's because people are too lazy to stop it and they've just vegdale and they're watching Netflix, I don't know.
+
+But apparently 2/3, willingly or not, are watching the recommendations.
+
+35% of sales from Amazon are from recommendations.
+
+It's not a bad system to have. You're thinking about making proportions of sales and growing your business.
+
+And 38% of the click through rates. Google News is our recommended links. People who are like you clicking through show that you're likely to click through as well.
+
+That's why they keep on pushing this down your throat.
+
+That's it. Not. There are three main algorithms within recommended systems.
+
+So one is collaborative filtering. So this is the birds of a feather flock together idea.
+
+If you have something in common with somebody else, you're going to have more than one thing in common.
+
+So if we recommend or somebody buys something and they're like you, we're going to recommend it to you as well.
+
+So yeah, somebody who like you is a good fit for you or content based filtering.
+
+So here we're taking the user kind of out of the picture.
+
+And this is more based on. Right. I want a camera that has so many megapixels, has this amount of zoom battery life, I can take it underwater, my kids can drop it off a mountain and it'd be fine.
+
+Yes, that has actually happened to me. So content based filtering, items that are similar, not caring so much about the person that's using them and then influence scoring.
+
+So if somebody like me tells you to do something, maybe I have a lot of influence over you as a lecturer.
+
+You're like, ah, Lauren's in a position of power.
+
+People trust her stupid thing. So maybe we should kind of follow what she says. Whereas if you just met somebody in the street and went, oh yeah, yeah, that place is pretty good, you're like, I don't know you, why would I trust you?
+
+So that's the idea behind influence scoring. So influence Scoring is the one we won't be covering today.
+
+We're doing on Tuesday. So collaborative sense, there are two senses here, narrow.
+
+So we are very much singling in on one person or one.
+
+They had a saying a few years ago, I don't know if anyone's heard it, Mr. Mercedes, have you heard that saying?
+
+So what they did was they did a not quite a census, but they did a huge survey of the population and they found the average person, apparently the average person owns a Mercedes, so then was male.
+
+So they then coined the term that if you are an average person, you were Mr. Mercedes.
+
+That's where that comes from. And now I'm showing my age. Brilliant. Or we can look quite general. So again, population based. So we are trying to make automatic predictions in both.
+
+So we try and collect information or we just kind of go yeah, let's just bit crazy.
+
+And if we've got more than people, more than one person, then we can aggregate those views and hopefully possibly make better predictions.
+
+So if you're going to implement a recommender system, you need to think about what the use case for your particular recommend system would be for.
+
+Does it need to be narrow because it needs to be quite tailored to that individual or can it be quite broad and you can gather lots of different, different viewpoints, standpoints and data.
+
+There are pros and cons to both pick what you want to do.
+
+How they typically work for collaborative filtering is we do need somebody to say what they like.
+
+I don't like. We need that starting point. This person likes this, this person, person doesn't like that or they like this.
+
+So we have a point of reference and then we use kind of that user's information to match what other people have said and they go, oh, okay, they both like this one and they both didn't like this one.
+
+So maybe they'll both like this one and go from there.
+
+Where we have similar users, they will recommend the same thing.
+
+However, getting the data, if we've got new items, this can be an issue.
+
+Okay, so we've got highly rated. They will be pushed. If they're not so highly rated or haven't been rated yet, then they might not be seen by the user.
+
+Different forms we can look for users that share the same rating patterns.
+
+If they put the rating pattern patterns in. So this is a problem Netflix has that is a very sparse matrix that they are trying to deal with here.
+
+And those from like minded users are found sort of in step to calculate a preference.
+
+Hopefully for the active user you've probably all seen from recommender systems on ebay and Amazon.
+
+They don't always get it quite right. They're not bad, but they're not always perfect.
+
+Or what we can do is say we have more information about the items.
+
+So in the case of Netflix, they have far more information about the movies and shows they have on there.
+
+So then we can actually have an item item matrix so we know more about what we are trying to recommend and we can make links between those first much more densely populated matrix.
+
+So slightly easier task. And then we can match the taste of the current user to anything that they've used before.
+
+And those links in the item item matrix, of course not always correct because links can be tenuous.
+
+Just because you enjoy one type of comedy doesn't mean you're going to enjoy another type of comedy.
+
+We're talking Netflix as an example. That's enough text. Here's a pretty picture. I've got two horribly sickeningly athletic people.
+
+One enjoys cycling and one enjoys running. So my cyclist really enjoys nice salads and a pizza.
+
+They're living a perfectly balanced lifestyle.
+
+But my runner also enjoys pizza and a nice salad. But what I know about my runner is they like a nice can of fizzy drink.
+
+So under collaborative filtering, because I know these two users have similar food tastes, I'm going to recommend the drink to that second user on his bicycle.
+
+Hopefully he won't drink whilst he's on the bicycle because he might fall off.
+
+But what do you think? Is this a good, good way of doing something? They share similar taste in food, so why not drink?
+
+Yeah, yeah. Got some head tosses. Yeah, yeah. You can see how it might work though, and how it might, you know, get a hit probably like 50, 50 of the time, maybe a little bit more.
+
+Actual algorithms that we use, so memory based ones.
+
+So this would be nearest neighbours if you want to go down the machine learning route.
+
+If you want to be more statistical, then this would be your Pearson's correlation or your Kendall's tau value, whether you're comparing between people or items.
+
+So looking for correlations there. Model based. I'm really sorry if it's going to trigger any horrible memories from some semester one for anybody, but we're going to look at your Bayesian networks and clustering models.
+
+I know, I'm sorry. Hybrid mixture of the two. Essentially these are the most common ones and as you can probably guess, they're the most expensive because running a large machine learning model and then doing some statistics on Etsy computing power, it eats it up.
+
+So Most commercial models will do this, but they've got the nice big processing behind them to do it.
+
+And then we can go into deep learning. I've put this one on there because it is used, but it has very tricksy results.
+
+There are people who don't like using deep learning because the reproducibility when you're using deep learning models is questionable.
+
+And as we will see recommender systems, reproducibility is questionable at the best of times.
+
+So although deep learning can be used, it's more the memory or the model base or a combination of the two that are the most common that you will find in industry usage.
+
+So why do we not like it? So challenges. You need huge data sets if you want to make good recommendations for your users.
+
+You need a lot of information and we don't often have that.
+
+So it could come from people just not engaging with it.
+
+So I know I'm absolutely terrible for this, but when I get to the end of Netflix and sometimes it will go, did you enjoy this?
+
+Or rate this? I can't be bothered. I want to turn it off and go to sleep. So engaging with the feedback process is challenging.
+
+New users are challenging because they're shiny and new and we don't know anything about them yet.
+
+And new products, again, challenge shiny new. Don't know anything about them. Scalability is a challenge because as users and products grow, these algorithms have to try and keep diversity, but try and keep recommending good recommendations to the user.
+
+It requires speed, they require memory, which of course, as things get bigger, just eats away at those two resources.
+
+Synonyms are a huge problem. There's a joke, probably some of the UK nationals will know this one, that in the UK you can drive four hours in one direction, the local accent has changed five times and bread rolls now go by a completely different name.
+
+So how do we account for that? Is it a bread roll? Is it a bap? I don't know. Who knows? How does our recommender system know we have to be able to deal with similar items having different names and being able to account for that and Right, recommending them.
+
+Grey sheep. Grey sheep are slightly better than black sheep, but not as good as white sheep.
+
+So a white sheep is somebody who follows the crowd.
+
+They are really easy to predict for because they'll just follow what everybody else does.
+
+We love them. Black sheep, we don't talk about them. They are the ones that are deliberately contrary.
+
+They will go against the grain, they will hate everything, hate life.
+
+And making recommendation for them is really, really difficult.
+
+Grey sheep are that bit in between. So on some things they will agree with the majority and you can make a recommendation for.
+
+And on other things.
+
+Speaker 5:
+
+Actually thinking now, interacting with recommender systems.
+
+Now you know they're a recommender system. How many times people I've seen this, seen this, show me something new.
+
+Because they don't. So if we don't have a lot of historical data, this is particularly true for new products.
+
+They can't push themselves up into that new sweet spot where they are being recommended.
+
+They're stuck in the tail, not being seen. Now we all feel sorry for inanimate objects, don't we?
+
+So content pretty much the flip side of the collaborative.
+
+We don't know so much about the user, but we do know about the product.
+
+So if we don't know much about the user, this is the content type of collaborating filtering you want to be doing.
+
+And we can build up a user. So essentially here we have items and they will have features that we can extract.
+
+We can extract those from either the product description or from previous reviews that others have left.
+
+And then they become our keywords. How important we make those keywords. One of the most common common methods is something called the term frequency inverse document frequency or TD idf, which we will meet when we look at text analysis a little bit later in the semester.
+
+This helps give us the features of weighting. So if people are looking at a pair of shoes, are they really going to care what color they are?
+
+Probably not. Are they going to care that the sole doesn't wear out in three weeks?
+
+Probably. Are they going to care that they're waterproof? Probably. Are they going to care if they're laces or Velcro?
+
+Yeah, but is that more or less important than them being waterproof or not wearing out?
+
+So it's working out trying to rate those different features.
+
+So TD IDF is a very basic one that they do. There are other more sophisticated methods that use machine learning.
+
+Again, I'm really sorry for therapy that I'm going to be paying for inevitably.
+
+But some of those machine learning methods include Bayesian classifiers, cluster analysis, even artificial neural networks because we're trying to estimate probability that somebody's actually going to like this or not.
+
+So these are essentially classification problems, content based filtering.
+
+They try to recommend something that is similar to what somebody liked before.
+
+We don't really know what else the user liked, we just know they liked something with this particular features.
+
+So we need a model of the user's preference, but we don't need to know everything and history is important.
+
+So again, new users cause problem. So pretty picture on how this one works. I don't need anybody else. I have just the One person who is important, they have watched lots of comedy films.
+
+So I'm going to go out on a limb. I recommend a new comedy film that's just been released and hope they like that one.
+
+We don't need to know what else they like. We don't need to know what somebody similar to them liked.
+
+We just need to know they've watched lots of comedy.
+
+Let's shove more comedy down their throat. The issue is trying to use their action from one source.
+
+When that system is limited to recommending content of the same type that they're already using, what value are they getting?
+
+What is our recommended sister adding? We know they like comedies so we recommend a new comedy.
+
+Oh, they like chocolate cake. Here's a new chocolate cake. What's my system adding to them? Yeah, there's nothing, nothing going there. So news articles, what if in a horrible future that we don't want to imagine that if you're browsing history could also see what music videos or YouTube videos or other other news sites you've been browsing so that they could then recommend more similar news sites or videos to you.
+
+Kind of where it does it with cookies, but hopefully everyone declines the cookies.
+
+In some cases you can leave your review which is always good or leave feedback that's they are probably the most important bits of data for a recommender system because they've come from the user, they really help to inform what it's doing.
+
+And sentiment analysis which we'll be touching again is how we do those ones as well.
+
+So popular opinion face recommender systems tend to be a little bit more successful on ones that just go on content because they've got that additional data source behind them.
+
+So text mining, sentiment analysis are two topics that are used there which we will cover a little bit later.
+
+But you can also use deep learning. I want to avoid that one because it is a bit up and down.
+
+Hybrid. So mixing the two up now we have the computing power royal we to do this.
+
+Hybrid systems are becoming more and more popular and more and more common.
+
+They can be more accurate than the pure approaches.
+
+Probably no surprising because they're using two different methods to be able to join and get more information.
+
+So some of the common ones such as the cold start where we don't know anything about the user can be overcome by our hybrid systems.
+
+But even then they are not perfect. Nothing is just some examples we can weight our recommender systems.
+
+So here we've got several different types of recommender systems but they don't all carry, they don't all have to carry the same importance.
+
+We can, we've got a more reliable one and we just want a backup source to make them a bit more accurate.
+
+We can weight those accurately. We can switch so we can have an array and go, okay, new user, don't know much about them.
+
+Let's do this content filtering until we know a bit more about them.
+
+Oh yeah, this user, we've got loads of historical data on this one right with them.
+
+So go with the, I can't remember the name of it, content filtering, collaborative filtering for that one.
+
+Okay. So we can switch and apply as needed. We can mix and match, we can mix them up, which is quite nice.
+
+So we have a essentially Frankenstein recommender system where we just bolt parts of recommender systems together and make our own one.
+
+Or we can feature so we can go, I like the feature of that one.
+
+And again Frankenstein a new recommender system with those we can compare different sets of features from different recommender systems and then pop them together for the next technique.
+
+So kind of like a chain, but not quite, quite the same as cascading where we put a rank on our recommender system.
+
+And then if we have ties in the high priority, the high ranking recommender systems, the lower ones will then break the ties between them when it comes to choosing the product.
+
+Or we've got the meta level. So one recommendation technique is applied, we get some sort of model and that will then be fed forward into the next one.
+
+So different ways of doing varies between them. So Twitter, if anybody has ever wondered how the cesspit that is Twitter gets the for you timeline, there are roughly 500 million tweets that they are accessing that they then need to filter down to you.
+
+So their algorithm is beautifully horribly constructed.
+
+There are lots of different Internet service and jobs.
+
+So there are different recommended systems for search, explore and ads.
+
+The important bits they're looking for are they use the feature selection so they will look at information contained in the tweets themselves.
+
+They will look at not only who is tweeting that information, but also who is retweeting that information.
+
+So the idea of that for your timeline is a mix of people that have interacted with who you interact with.
+
+Collaborative filtering, but also on topics that you have shown interest in.
+
+They have two different networks, so your in network they're the easy ones to pick because you have some sort of connection with them.
+
+It's the outer connection, the outer network that they throw in there.
+
+They are the more challenging ones to find because you obviously have no commonality between them.
+
+One of the things they do tend to use use is what we call communities.
+
+So there are several. I think it's thousand different communities now and they broadly just capture people by interest.
+
+So you know, a football team will have a community, a singer will have a community or a politician.
+
+And when you interact with similar topics as people from those communities, that's where they grab the information and profit on your timeline for you there is a blames properly and fully how the Twitter algorithm does actually.
+
+Well, it's a really interesting read if you want to look at how this is done kind of in industry and the level of detail they go into essentially stalking you to make sure they are putting content on that top timeline that you will interact with hopefully.
+
+So how do we know if our recommend system is actually working?
+
+How do we do this so we can use precision and recall from our traditional machine learning metrics?
+
+They're not always successful because we need diversity, we mean novelty.
+
+So the coverage is also important as well. So traditional machine learning metrics not always applicable in every situation.
+
+So of course all the academics have then going to pile on and said these are not suitable.
+
+Mean square error is the most common one. In fact, the Netflix RA Recommender Prize used mean root mean square error in their winning approach.
+
+And there are three ways that people kind of do this.
+
+They're all equally as flawed as each other. So we can do user studies where we've got a small population which we assume is representative of people who are using the products.
+
+And these can range from tens to hundreds to thousands of people.
+
+But think about the users of Amazon. Is really 1000 people going to grab enough information to say if that recommender system is working or not?
+
+Probably not. And then you get people to judge which recommender system is giving them the best recommendation for them.
+
+We can do online evaluations. These of course are called a B tests. So these are typically thousands of users. You've got a real product, a recommender system and it will randomly pick two different recommender systems, show them the recommendations and the user will go yeah, I like that one.
+
+Or no, I prefer the other one. The rates at which those ones are measured are usually like click through.
+
+So it's not an exact definitive measure, but kind of an implicit measure of how well they are doing.
+
+Offline is just using historical data. So it does exactly what says on the tin. It's not using anything new. It's very much a snapshot in time. You can imagine the issues that one leads to. But yeah, offline data is Historic. It's imprecise, it doesn't change. So beyond accuracy, what issues do we have? It's been shown in the literature that a user will like diversity.
+
+A user doesn't like being shown the same thing over and over again.
+
+So if you can show them different things, when there's lots of differentiability within the list you give them, you have a happy user.
+
+Recommender persistence. Apparently, we as humans don't tend to look at the first option in much detail.
+
+We tend to. I know, I can see all your surprised faces. We tend to ignore the first option that is given to us.
+
+So a few recommended systems have got over this by persistently showing products over and over again, so that when the user actually has the time to look at them in detail, they can.
+
+Now, privacy. You probably guess where I'm going with this one.
+
+If you want to make a recommender system that gives really, really good recommendations to your user, how much do you think you're going to need to know about that user?
+
+A lot. Now, in the UK we have some lovely privacy rules which keep us protected from these horrible phishing recommender systems.
+
+So there is a lot of research in this area, because how do we balance that?
+
+People want to have products recommended to them.
+
+People don't want to think, they want to know, oh, this is a good one or this is a bad one.
+
+So how do you balance that? Keeping data private but making a good recommendation because you need that information.
+
+The Netflix data set, which they use as an open competition, which is openly available and cringing.
+
+When I say this, I know that has a lot of personal information in it.
+
+A lot. I don't know how they get away with it. Probably because they're in the us, so they're looking at.
+
+One of the areas of research is that how can we have these large data sets which we need for research to see if we can make these things better?
+
+But also what happens when. If I've got access to a secondary data set, how can I stop somebody revealing an individual identity, even if the data is anonymous, if you've got access to another bit of information, you could very easily uncover people's identities and that becomes a very big legal issue.
+
+User demographics, apparently in the research, I'm not sure I believe this.
+
+Older people are more likely to trust a recommender or a recommender system than younger people.
+
+There is a gap between older users and younger users, where older users are far more trusting than.
+
+I don't know whether we're more skeptical as younger people because we've Seen technology change so rapidly?
+
+I don't know. Research shows that there is a difference in the users robustness.
+
+Do you want people to be able to influence your rankings?
+
+Should people be able to influence your rankings for better or for worse?
+
+How do you protect your system against that? And then serendipity? So basically how surprising is your list that is coming out of your recommender system?
+
+Now if I'm going to go do my weekly shop and I go recommend system, give me a shopping list, am I really going to be surprised when it goes buy bread, buy milk, buy eggs.
+
+I mean yeah, they're useful because the amount of times I've got back from the shop and gone yeah, we're not having sandwiches this week.
+
+So useful. But what if you start doing it every week? Am I going to stay engaged? My recommended system at this point is basically nagging me.
+
+It's telling me you clearly have the memory of a goldfish.
+
+Please remember bread this week. We want people to keep using them. So again that balance between surprising them with new products but making sure you are still tailoring to their taste.
+
+Trust like you all trust me so implicitly. Explainability. How is the recommender system making that decision?
+
+What data do they have on me? Is that accurate? Can I trust what it is telling me? And then labeling. So this is actually a really interesting one. I was quite surprised by these statistics. So actually how the recommendations are labeled will affect how people feel about them.
+
+So there was a study which looked at the click through rate on Google and it found that it didn't surprise me in that sense because I feel the same.
+
+But you know, when you get the sponsored links the top of your Google search, how many people don't click on those?
+
+I'm gonna put my. Yeah, yes, excellent. I'm saying only 5.93% of people will click a sponsored link, whereas if they are organic clicks, organic click throughs, that goes up to 80.86%.
+
+If there is no label then that goes up again to 9.87%.
+
+So you know, is always having a label a good thing?
+
+Yes, she says yes in the research. But I was at least pleased to know that I'm not the only person who doesn't trust the sponsored links.
+
+It did make me feel a bit better reproducibility.
+
+So it is notoriously difficult, exceptionally difficult to actually get the same result twice with a recommender system, especially if you're evaluating offline.
+
+So in the second year AI module I know I taught next nearest neighbors.
+
+I love that one because it's incredibly stupid. If it's a case of a tie, it flips a coin. So. So we're trying to do recommender systems using nearest neighbours, knowing that in the case of an even number of neighbours it's just going to flip a coin and pick one.
+
+This has actually led some academics to go, well, there's a reproducibility crisis in this area.
+
+Yes, it's a crisis. We're going to have to address this in 2019. So a few years old now, I'm not sure it's been updated but they actually found that 40% of the outcomes in recommendation algorithms that were published could not be replicated.
+
+That is up there with psychology experiments. But on the other hand, recommended system, a psychology experiment.
+
+It's a very blurred line between these to at this point, so probably not quite surprising.
+
+Deep learning and neural networks, they have been used in the winning solutions but again their results are really, really varied and not easy to reproduce.
+
+So of course industry use them the most commonly and they've got the nice power behind them.
+
+Turf juice them up. Hopefully now we all know what recommender system is.
+
+The flaws, the big flaws in them. The two that we've looked at today are collaborative filtering, where we need to know information about the user and content based filtering, where we know more about the item than we do about the user.
+
+Influence scoring we will touch we'll look at next week.
+
+So then collaborative and content are often used together because we don't often know information or all the information about the user we know always tend to be about the item but not always about the user.
+
+So we tend to use those together to varying degrees of success.
+
+I said only 40% can be replicated. Great. And we've got our fantastic black and gray sheep that we need to take account for.
+
+Pause that there the same break and then in the end.
+
+Speaker 6:
+
+Demo in this case. So what I want to show you here is how we can use queries.
+
+So use the buttons we've seen before, match collect with to find friends that we have in common.
+
+So this will be useful for the. The worksheet that end up there for today. Come on. I thought I'd waffled enough for you to start. Fine, so going to grab the code then. I don't know why then, but every now and then it will say it can't connect and then it will go okay, I will connect this time.
+
+So no need to pop any data into the import folder this time.
+
+It's a collection of creates for the different nodes.
+
+File that through. I've corrected my spelling. You might recognize some of the names that have been or up here.
+
+Expand the graph. So and then move the node around. So I spent a little bit of time on S floor and I was looking at the modules that some of you have taken or taking possibly as might be the.
+
+The option. So you all have one lecturer in common. So I put me in the middle because I want to put me in the middle.
+
+So there I am. So some of you have unfortunately had to have Rory in the first semester.
+
+I'm sorry, I'm hoping this is oil and farm and so soothing for you in the second semester.
+
+And I know probably you come from the NASS degree.
+
+So you have had Craig or you might have Craig this semester.
+
+I've had Craig, so I need to learn that to port as well.
+
+So here we are. Here are some collection of us in comp 3008. But there are a couple of people who unfortunately have only been subjected to me and not anybody else.
+
+So how can we find. How can we use a graphical database to make recommendations for these people?
+
+So we can use the query for this. So what I'm going to do here is we're going to go for a good old match.
+
+We love our match function and we're going to match.
+
+I'm going to call it L1 for Lecturer 1. And I'm looking in the lecturer nodes and we going to specify the relation.
+
+No, go there. And that's my teachers either I realized. Never mind. It's a Thursday afternoon and so lecture one is going to teach a student.
+
+This is where you need to make sure the arrows go the right way.
+
+Because we want to look for is who has got students in common.
+
+So if we've got one lecturer with this student who might be a recommendation for the other one.
+
+So I'm going to go with teachers as well. So this should bring up all the students that myself and Craik have in common.
+
+So we'll call that lecturer 2. Make sure when you're doing this that they do have different names.
+
+Okay, so I've deliberately gone L1 and L2 so that when you're running the subsequent parts of the query, as we'll see in a minute, you've got those two distinct ones to pull from.
+
+Don't pull them both electro one electrode because then it will go which one?
+
+I don't know what you mean. So distinguish between the two, even though it is the same node but two distinctly different people.
+
+And then going to go where? So what are we looking for? No, not in that bracket, you stupid thing. Where. So what are we looking for? So where the L1 dot name is equal to make sure you put it in a string, if it's a string string, and make sure you spell it correctly, which I have now failed to do twice in a row and it's my own name.
+
+Nearly home time. We're good. So we're going to match where one of the names is equal to mine and we're going to put the second lecture name.
+
+So here you can see why we need to have the L1 and the L2 or the S1, S2 for doing different students or M1, M2 if you're doing movies or A1, A2 if you're doing actors.
+
+A bit of a foreshadow for the workshop. So L2 name is going to be equal to go pick on Craig. And then what I want to do is I want to see the results.
+
+So why do I keep forgetting to print?
+
+Speaker 7:
+
+Return.
+
+Speaker 6:
+
+So I want to return my name. I'm going to return Craig's name as a second lecturer and I want to know who we've got in common.
+
+So L1s and L2 put them in that order. Then I get the table and get them in that order.
+
+Speaker 7:
+
+Ta da.
+
+Speaker 6:
+
+Let me get a nice pretty graph so I can see that I've got.
+
+I only have six units in there to begin with. I'm sure I have more in common with Craig, but out of those six that I put in, I've got Ryan and Bailey that share both me and Craig.
+
+And if anybody hasn't had a play around yet with the nodes, remember you can, you can move them all around, you can make a nice little square with these ones because they come four and then if we did a table, it comes out horribly.
+
+So text. There you go. So you can see the order in which I wrote the query, I wanted L1, L2 and then student.
+
+So the table has given me L1, L2 and then Student. In your coursework, if I want stuff in particular order then I don't think I have been that prescriptive.
+
+But for those of you who suffer from OCD or they like it to look really neat, you want to make sure the year is in the first column of your table.
+
+Then when you return, tell it to return the year first and then return the other variables and it will put it in that order for you.
+
+For those of you who don't care what order it comes back in, you just, you get the right answer, return it in whatever order you like.
+
+The important thing for these was the recommender systems is making sure you label each of the part that you're after differently for that return statement.
+
+Quite nice quick and short one. Today it is a little bit longer of an exercise on the worksheet.
+
+So this is now opportunity for you to get stuck in and have a play with how we find recommender systems.
+
+And I've got a few questions so I'll wander around and sort those before my Internet gives out again.
+
+It. Yes, it's. Yeah, it's recorded. It has recorded, yeah. So it will be on there, don't worry.
+
+Speaker 7:
+
+Ship. Yes, of course. Yes, there is.
+
+Speaker 6:
+
+That.
+
+Speaker 7:
+
+Thank you.
+
+Speaker 6:
+
+How's it going this semester? I know we're only a couple of weeks in.
+
+Speaker 7:
+
+Yeah, I'm not going to lie, you know machine in the machine learning.
+
+I've got 73 MSX. The.
+
+Speaker 6:
+
+Oh, what's that?
+
+Speaker 7:
+
+I think I'm. I've done exactly what the feedback he's given me this exercises.
+
+Speaker 6:
+
+Like.
+
+Speaker 7:
+
+It'S just hustling. That's just one module but yeah, it's not too hard actually doing two modules at once.
+
+I don't even know how. I don't have two modules on a project in one semester in one in first year and second year.
+
+Speaker 6:
+
+So as long as you find the workload, you're okay. And if you do have any issues and problems, don't please don't hesitate to reach out.
+
+Speaker 7:
+
+Thank you.
+
+Speaker 6:
+
+And I can.
+
+Speaker 7:
+
+I was. I asked Amir, Amir's actually really nice to me. I asked him and he said that's like absolutely fine.
+
+I was conceived but I could because there's too much at once.
+
+If I can get a BC because I can just get unlimited ECs.
+
+I'm not asking you for it, just give you five, you know, I'm not looking for an easier time.
+
+Speaker 6:
+
+No, no, I know you're not. I know you're not. Yeah, yeah. As I said in my first email to you, my mom has a brain.
+
+Speaker 7:
+
+I've actually made quite like. Doctors call me incredible and stuff. I made a good copy that. It's the. The problem is, is people take social stuff for granted.
+
+Like, it's actually not that. It's actually quite hard and it's like I. I look autistic because I don't make eye contact.
+
+The thing is, if I make eye contact, it's a whole another thing I.
+
+Speaker 6:
+
+Need to think about and that's not something you need to be dealing with right now.
+
+Yeah, no, that's. That's absolutely fine. Worries. Yeah. Anything, you know, too much. You still seen donate. I was.
+
+Speaker 7:
+
+I was seeing him and I. It's because there's not much he can really help me with right now, but he was really helpful through the machine learning.
+
+Yeah, I saw him like every week throughout semester one.
+
+Speaker 6:
+
+He's lovely as well.
+
+Speaker 7:
+
+Yeah. And he's really nice. I might start. I might see him again actually.
+
+Speaker 6:
+
+Yes. If you want him to sort of help with the.
+
+Speaker 7:
+
+Oh, he's what?
+
+Speaker 6:
+
+He's done the J, but he's done R. And Python.
+
+Speaker 7:
+
+Always Python.
+
+Speaker 6:
+
+You can do. I'm going to show it using R in the report.
+
+Speaker 7:
+
+Yeah, that's cool.
+
+Speaker 6:
+
+On my laptop. So I have a hunch it's not just out of power. I have a hunch it's just crap. Yeah, It's.
+
+Made with Genio Notes
