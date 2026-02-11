@@ -13,7 +13,7 @@ The "Year Before" Pattern: The central hint for the problem is to look at data f
 
 REMOVE REMOVE REMOVE BEFORE SUBMISSION
 
-----------------------------------------------------------------------------------------
+---
 
 Neo4j: a graph database management system that stores data as nodes (entities) and relationships (connections between entities), thereby enabling efficient traversal of highly connected datasets wherein traditional relational joins would instead be computationally expensive. Unlike tabular databases, Neo4j represents data as a property graph; nodes and relationships can hold key-value properties; queries are expressed in Cypher, a declarative pattern-matching language.
 
@@ -21,13 +21,13 @@ SET-EXERCISE 1.
 Q: "Create a Neo4j database to store the data comprised in the CSV files. The database should respect the data model displayed in the example in the figure below, please note that the image below has had some nodes hidden for clarity. You have to provide all the commands needed to create the database and populate it with the data in the CSV files, and you must provide them in the exact order you propose to execute them. If you create indexes, you must also include the commands for index creation. Your database will be recreated, and the only way to do so is by following the commands that you will provide, in the order in which you provide them."
 
 1.1 Data Model
-The database respects the specified data model, utilising intermediate nodes (Entry and Vote) to store detailed attributes, thereby adhering to Lauren's requirement of: no properties on relationships.
+The database respects the specified data model, utilising intermediate nodes (Entry and Vote) to store detailed attributes to adhere to Lauren's requirement of: no properties on relationships.
 
-The model centres on Year nodes representing each contest, connected to Location nodes via HOSTED_AT and to host Country nodes via HOSTED_BY. The winning entries are modelled as Entry nodes (storing song, artist, running order and total points) linked from the year via Winning_Entry and to the performing country via PERFORMED_BY. 
+The model centres on Year nodes representing each contest, connected to Location nodes via HOSTED_AT and to host Country nodes via HOSTED_BY. The winning entries are modelled as Entry nodes (storing song, artist, running order and total points) linked from the year via Winning_Entry and to the performing country via PERFORMED_BY.
 
 The voting data uses a Vote intermediate node containing the `points` and `points_type`. Country nodes connect to the Vote node via GAVE and TO relationships. Each Vote is linked to its Year via Voting_Result. This avoids placing properties on edges, ensuring the graph remains in a valid property graph schema without data loss.
 
-1.2 Database Creation commands
+1.2. Database Creation commands
 
 Ensure commands that follow are executed in the exact order shown to recreate the database:
 
@@ -74,17 +74,17 @@ Ensure commands that follow are executed in the exact order shown to recreate th
     CREATE(v)-[:TO]->(to)
     CREATE(y)-[:Voting_Result]->(v);
 
-    An intermediate-node approach is the core design decision as Eurovision voting is a ternary relationship i.e. Country(A) gave X points to Country B in Year Y. One cannot model this cleanly as a single edge because Cypher edges connect exactly two nodes; introducing a third dimension (the year) onto a relationship property would work syntactically but kills traversability, i.e., it kills one's ability to pattern-match on the temporal dimension as you cannot write `MATCH (y:Year)-[:Voting_Result]->(v)` if the year is buried inside an edge property instead of being a node in its own right. With Vote as an intermediate node, every dimension of the relationship is a first-class citizen you can `MATCH` on directly. Same logic applies to Entry, a song winning is not a property of a country or a year,  it's the intersection of both, so it earns its own node.
+    An intermediate-node approach is the core design decision as Eurovision voting is a ternary relationship i.e. Country(A) gave X points to Country B in Year Y. One cannot model this cleanly as a single edge because Cypher edges connect exactly two nodes; introducing a third dimension (the year) onto a relationship property would work syntactically but kills traversability, i.e., it kills one's ability to pattern-match on the temporal dimension as you cannot write`MATCH (y:Year)-[:Voting_Result]->(v)` if the year is buried inside an edge property instead of being a node in its own right. With Vote as an intermediate node, every dimension of the relationship is a first-class citizen you can `MATCH` on directly. Same logic applies to Entry, a song winning is not a property of a country or a year,  it's the intersection of both, so it earns its own node.
 
     The MERGE/CREATE distinction matters: MERGE for Country, Year, and Location because duplicates are meaningful errors (would silently fracture the graph), CREATE for Vote and Entry because every row is a new instance and thus two votes are "the same vote." because each .csv row represents a unique-distinct voting event; MERGE would wrongly collapse rows sharing identical point values into a data-losing single node
 
-1.3 Design Rationale
+1.3. Design Rationale
 
 1.3.1 Handling Relationship Properties (Graph Reification)
 
 Adherence to the no-properties-on-relationships constraint necessitates use of intermediate nodes. In a standard property graph, voting would typically be modelled as an edge `(Country)-[:VOTED_FOR {points: 12}]->(Country)`. However, compliance with this constraint means the relationship must be reified (the edge gets promoted to a first-class node capable of holding properties).
 
-----------------------------------------------------------------------------------------
+---
 
 The pattern (`(Country)-[:GAVE]->(Vote)-[:TO]->(Country)`) creates a star schema around the interaction. This allows the `Vote` node to hold properties (points, type) and connects it to the `Year` context. This approach, known as reification, not only solves the constraint issue but also improves database extensibility; future attributes (jury details) can be added to the Vote node without refactoring the graph schema.
 
@@ -97,7 +97,7 @@ Q: "Produce a Neo4j query to list all the countries that have won the competitio
     RETURN Country, Wins
     ORDER BY Wins DESC
 
-----------------------------------------------------------------------------------------
+---
 
 SET-EXERCISE 3.
 Q: "Produce a Neo4j query to find all the host countries which then also went on to win the contest that year. The query should list the winning nations, the song they won with and the year in which hey won returned in chronological order. You should submit the query and the result with the columns appropriately named."
@@ -110,7 +110,7 @@ Q: "Produce a Neo4j query to find all the host countries which then also went on
 
 This query works on Eurovision's hosting rule: the winner of Year N hosts Year N+1. By matching countries that won in consecutive years (y1 and y1+1), you can identify cases where a country won whilst hosting, since their y1 victory made them the y2 host the next time round.
 
-----------------------------------------------------------------------------------------
+---
 
 SET-EXERCISE 4.
 Q: "Produce a Neo4j query to identify all the persistent friendships between countries. The query should list both countries and the number of points given. The query result should be listed in alphabetical order by the country giving the points. You should submit the query and the result with the columns appropriately named."
@@ -122,7 +122,7 @@ Q: "Produce a Neo4j query to identify all the persistent friendships between cou
 
 In network analysis a "persistent friendship" is quantified by the cumulative weight of interactions over time. As Charron (2013) details, this is commonly identified by analysing pairwise voting to detect "systematic collusive voting patterns" (5.2. Friendship-networks).
 
-----------------------------------------------------------------------------------------
+---
 
 REFERENCES
 
