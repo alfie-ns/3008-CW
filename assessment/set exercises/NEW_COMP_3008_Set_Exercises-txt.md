@@ -2,6 +2,8 @@ COMP 3008 SET EXERCISES (Neo4j Queries)
 Version: 5.24.0
 
 - [ ] talk about results from Neo4j
+- [ ] persistent friendship: continuous between two parties
+- [ ] talk about and perhaps cite maths 
 - [ ] change to .txt file
 - [ ] manually check the results are correct despite working
 
@@ -24,7 +26,7 @@ Q: "Create a Neo4j database to store the data comprised in the CSV files. The da
 1.1 Data Model
 The database respects the specified data model, using intermediate nodes (Entry and Vote) to store detailed attributes to adhere to the principle of "no properties on relationships."
 
-The model centres on Year nodes representing each contest, connected to Location nodes via HOSTED_AT and to host Country nodes via HOSTED_BY. The winning entries are modelled as Entry nodes (storing song, artist, running order and total points) linked from the year via Winning_Entry and to the performing country via PERFORMED_BY.
+The model centres on Year nodes representing each contest, connected to Location nodes via HOSTED_AT. The winning entries are modelled as Entry nodes (storing song, artist, running order and total points) linked from the year via Winning_Entry and to the performing country via PERFORMED_BY.
 
 The voting data uses a Vote intermediate node containing the `points` and `points_type`. Country nodes connect to the Vote node via GAVE and TO relationships. Each Vote is linked to its Year via Voting_Result. This avoids placing properties on edges, ensuring the graph remains in a valid property graph schema without data loss.
 
@@ -56,13 +58,16 @@ Ensure commands that follow are executed in the exact order shown to recreate th
     CREATE(y)-[:Winning_Entry]->(e)
     CREATE(e)-[:PERFORMED_BY]->(c);
 
-1.2.3- Load host countries (creates HOSTED_BY relationships)
+1.2.3- Load Locations (fulfils brief requirement to process all CSVs)
+    // The 'Country' column duplicates winner data wherein only Location is extracted.
+    // MERGE safely deduplicates data already captured in 1.2.2.
     LOAD CSV WITH HEADERS FROM 'file:///eurovision_location.csv' AS row
     MATCH(y:Year {year: toInteger(row.Year)})
-    MERGE(host:Country {name: toLower(trim(row.Country))})
-    MERGE(y)-[:HOSTED_BY]->(host);
+    MERGE(l:Location {name: toLower(trim(row.Location))})
+    MERGE(y)-[:HOSTED_AT]->(l);
 
 1.2.4- Load voting results (creates Vote intermediate nodes)
+    // The Country column contains host city slugs e.g. basel and malmo i.e. not country names, 
     LOAD CSV WITH HEADERS FROM 'file:///eurovision_results.csv' AS row
     MERGE(from:Country {name: toLower(trim(row.From))})
     MERGE(to:Country {name: toLower(trim(row.To))})

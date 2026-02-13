@@ -30,12 +30,17 @@ header-includes:
       }
 ---
 # TODO
+- [ ] Don't use Word Clouds for Categorical Data
+- [ ] no pie, 3D, radar charts
+- [ ] Lauren does not care about the code but the analysis
+- [ ] derive Lauren’s coding conventions from her GitHub 
+- [ ] latex AND python visualtions derived for lecture 6. Line graph !! Lauren wants this, ensure is clear if needed vote lec 6
 - [ ] args and kwargs
 - [ ] concise-as-possible alike COMP_3003
 - [ ] LaTeX diagram that has fully context within cw
 - [ ] rember to utilise the `lecture-notes.md` from ALL the relevant lectures, dynamically whilst making the coursework
 - [ ] Go as far as conceptually as possible, as far complex as the subject goes
-- [ ] Make the code work ASAP and start talking about it using what's learnt in the module
+- [ ] Make the code work ASAP and start talking about it using what's learnt in the module via Lauren
 
 # Appendices
 
