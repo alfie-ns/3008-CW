@@ -3,7 +3,7 @@ Version: 5.24.0
 
 - [ ] talk about results from Neo4j
 - [ ] persistent friendship: continuous between two parties
-- [ ] talk about and perhaps cite maths 
+- [ ] talk about and perhaps cite maths
 - [ ] change to .txt file
 - [ ] manually check the results are correct despite working
 
@@ -67,7 +67,7 @@ Ensure commands that follow are executed in the exact order shown to recreate th
     MERGE(y)-[:HOSTED_AT]->(l);
 
 1.2.4- Load voting results (creates Vote intermediate nodes)
-    // The Country column contains host city slugs e.g. basel and malmo i.e. not country names, 
+    // The Country column contains host city slugs e.g. basel and malmo i.e. not country names,
     LOAD CSV WITH HEADERS FROM 'file:///eurovision_results.csv' AS row
     MERGE(from:Country {name: toLower(trim(row.From))})
     MERGE(to:Country {name: toLower(trim(row.To))})
@@ -114,8 +114,6 @@ Q: "Produce a Neo4j query to find all the host countries which then also went on
     WHERE y2.year = y1.year + 1
     RETURN c.name AS Winning_Nation, e.song AS Song, y2.year AS Year
     ORDER BY Year ASC
-
-
 
 This query works on Eurovision's hosting rule: the winner of Year N hosts Year N+1. By matching countries that won in consecutive years (y1 and y1+1), you can identify cases where a country won whilst hosting, since their y1 victory made them the y2 host the next time round.
 
