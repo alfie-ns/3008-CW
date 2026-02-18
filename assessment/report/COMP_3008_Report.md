@@ -30,6 +30,8 @@ header-includes:
       }
 ---
 # TODO
+- [ ] ensure the plots look very distinct like I put a lot of time in changing how it looks eg colours
+- [ ] in the code remove any spaces that are not needed 
 - [ ] Don't use Word Clouds for Categorical Data
 - [ ] no pie, 3D, radar charts
 - [ ] Lauren does not care about the code but the analysis

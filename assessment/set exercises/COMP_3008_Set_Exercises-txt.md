@@ -6,6 +6,10 @@ Version: 5.24.0
 - [ ] talk about and perhaps cite maths
 - [ ] change to .txt file
 - [ ] manually check the results are correct despite working
+- [X] Write in LaTeX
+- [ ] remember to utilise the `lecture-notes.md` from ALL the relevant lectures, dynamically whilst making the coursework
+- [ ] Go as far as conceptually as possible, as far complex as the subject goes
+- [ ] Make the code work ASAP and start talking about it using what's learnt in the module
 
 The "Year Before" Pattern: The central hint for the problem is to look at data from "A year ago" or "The year before." You must identify a specific pattern linked to this timeframe.
 
@@ -18,7 +22,7 @@ REMOVE REMOVE REMOVE BEFORE SUBMISSION
 
 ---
 
-Neo4j: a graph database management system that stores data as nodes (entities) and relationships (connections between entities), thereby enabling efficient traversal of highly connected datasets wherein traditional relational joins would instead be computationally expensive. Unlike tabular databases, Neo4j represents data as a property graph; nodes and relationships can hold key-value properties; queries are expressed in Cypher, a declarative pattern-matching language.
+Neo4j: a graph-database management system that stores data as nodes (entities) and relationships (connections between entities), thereby enabling efficient traversal of highly connected datasets wherein traditional relational joins would instead be computationally expensive. Unlike tabular databases, Neo4j represents data as a property graph; nodes and relationships can hold key-value properties; queries are expressed in Cypher, a declarative pattern-matching language.
 
 SET-EXERCISE 1.
 Q: "Create a Neo4j database to store the data comprised in the CSV files. The database should respect the data model displayed in the example in the figure below, please note that the image below has had some nodes hidden for clarity. You have to provide all the commands needed to create the database and populate it with the data in the CSV files, and you must provide them in the exact order you propose to execute them. If you create indexes, you must also include the commands for index creation. Your database will be recreated, and the only way to do so is by following the commands that you will provide, in the order in which you provide them."
@@ -122,12 +126,16 @@ This query works on Eurovision's hosting rule: the winner of Year N hosts Year N
 SET-EXERCISE 4.
 Q: "Produce a Neo4j query to identify all the persistent friendships between countries. The query should list both countries and the number of points given. The query result should be listed in alphabetical order by the country giving the points. You should submit the query and the result with the columns appropriately named."
 
-    MATCH (source:Country)-[:GAVE]->(v:Vote)-[:TO]->(target:Country)
-    WITH source, target, sum(v.points) AS Total_Points
+- [ ] work out optimal years threshold for "persistence" (15 as starting point; experiment with 10, 20, 25 etc.
+
+    MATCH (source:Country)-[:GAVE]->(v:Vote)-[:TO]->(target:Country),
+          (y:Year)-[:Voting_Result]->(v)
+    WITH source, target, count(DISTINCT y) AS Years_Voted, sum(v.points) AS Total_Points
+    WHERE Years_Voted >= 15
     RETURN source.name AS Country_Giving, target.name AS Country_Receiving, Total_Points
     ORDER BY Country_Giving ASC, Total_Points DESC; // second sort shows highest-value friendships first within each alphabetical group
 
-In network analysis a "persistent friendship" is quantified by the cumulative weight of interactions over time. As Charron (2013) details, this is commonly identified by analysing pairwise voting to detect "systematic collusive voting patterns" (5.2. Friendship-networks). By summing points across all years for each country pair, this query identifies enduring alliances, revealing which countries consistently support each other in the contest. The alphabetical ordering by the giving country allows easy reference, whilst the secondary ordering by total points highlights the strength of the friendships within each group.
+To mathematically codify "persistence", this query traverses the temporal dimension to calculate the distinct number of years a voting interaction occurred (`count(DISTINCT y)`). As Charron (2013) details, persistent friendships are commonly identified by analysing pairwise voting to detect "systematic collusive voting patterns" (5.2. Friendship-networks). By enforcing a strict threshold of at least (N) distinct contest years, the query filters out sporadic high-point exchanges and recent split-voting noise, isolating only genuine, long-term voting alliances. The alphabetical primary ordering fulfils the brief's requirement, whilst the secondary descending sort mathematically spotlights the strongest weighted interaction within each donor's friendship cluster.
 
 ---
 

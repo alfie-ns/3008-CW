@@ -1,0 +1,373 @@
+3008-4
+
+Transcript
+
+Speaker 1:
+
+And you're like, okay, yeah, so we can control the line width, we control the line style.
+
+Let's go down to one and see if we can actually see that a little bit better.
+
+But within theme, we can also control a lot more of the plot information.
+
+Axi's title we've got. So if we do element text, we can control the size. So pick a font size, any font size you like. One. Brilliant. So our element title. Our font size is going to be one. We can pick a color. Pick a color for your text that you're not gonna be able to see because it's gonna be so small.
+
+Yellow. We'll go with yellow. So that's our axes title. If we go axes, We just control the X axes now. So this is independently of the Y axis. Again, we can do the text on that one. What size should we make our x axis text? 20. 20. And what colour? Truly this one. Brown. Brown. Oh, quotation marks. Lauren. Oh, my God. There we go. Did somebody say it's not that bad? Is something wrong or. No, it's all here. Rocky. So we now have lovely size 20 brown colored text on the X axis.
+
+We do have an total on the Y axis. It's very, very weeny and yellow. I don't know where the X axis one has gone, but there is still one there on that one.
+
+You can control these breaks as well. So if we go so scale, what are we? Y. So careful which one you pick. So here we've got Y is a continuous value. If we've got state time, we can do logarithmic scales.
+
+Any ones you want. So we do change our Y scale and we can go. Breaks equal. And we could use a really random breaks. Let's go zero. Pick a number between 1 and 50. 50. Okay, so another number between 50 and 150. Not so. So between 100 and 150. 123. 123. Yes. You're getting this. Between 150 and 200. 200. 200. 200 and 250. 240. 240. Was that 250 and 300? 273. 2 73. 300 and 350. 1. You've been waiting for that one, haven't you? 3504-004004-50400. 450. 450. 500. 450. Sorry. 5005-505505-50500. 550. 600. 650. 5. Hundred and fifty five. 555. Yeah. Okay, so 600, 650. Sorry, 660. Yeah. So what we need one below 650, we need one between 600 and 650.
+
+What should we go for? 632. Love it. So then 7 and 750. 707 50. Pick a number. 7127-127508-00777. 777. So we are now going to determine those breaks, essentially.
+
+There we. Go. This is your fault. So there we go. There is now our axes label. This is why I said when we looked at that BBC clock one on last Thursday, they had to deliberately make those axes that bad.
+
+That's a really useful scale, guys. Well, I love it. So you can do more useful breaks. Although we had 200, 400, 600, 800. Yeah, we've gone a bit stupid and done really random ones, but you could do it by 25, by 50s, you've got that control to be a bit more granular, especially with this particular background, which of course you can change as well as it will put the white lines in at your brakes if you do do.
+
+Should we call them more sensible brakes than what we've got or is that insinuating that our brakes are not sensible?
+
+It does mean you don't have to put in any horizontal or vertical lines.
+
+So if you do have all that control. So line plots, we can control line width, line styles, colors, we can control the breaks for our axes, we can control the color, the size, we can control the font.
+
+And if we want to either make it nice and accessible and diversity friendly, or you can go completely the other way and use windings and make it the most hideous plot ever.
+
+But all those are available to you. Will it let me do a. I'm intrigued now to see if it'll let me just do a bar plot by itself.
+
+Use the paper Pokemon data this time. So I want the. No, it's not going to let me do that. Just thought it's not gonna. So what I'm gonna do this time with the Pokemon data is there is nice thing about R compared to Python is if you want to do multiple functions, you can.
+
+So with Python, if you want to reshape your data, you have to select your columns and save it.
+
+Then you have to do whatever it is you want to do to those columns.
+
+In Python with R, there is this wonderful operator called the pipe operator.
+
+So it's percent greater than percent or there's a quick key, which is control shift and then M for mother, which puts that in.
+
+Essentially what it does is it tells R to do all of these operations in sequence.
+
+So you can get a data frame, you can then select columns, you can then filter those columns, you can then count those columns and then you can summarize all that data and then push it through into a plot all in one go.
+
+Just keep shoving it down the pipeline. Do this, then this, then this, and then this. We won't go down that far. So what I'm going to do is I'm going to take the print data and then what I want to do is I'm going to spell group.
+
+So I need another library. So the DPYR library allows you to manipulate data.
+
+So I'm going to bring that one in. Then that means I should have group by. So I'm going to choose a particular variable to group by.
+
+So we have got. So we got type or we have got. I've only got type and should be grouped by type 1 or type 2.
+
+For our Pokemon, what should we group by. Type 1? Okay, so we'll group by. Type 1 and then I'm going to count how many is in that group and then here we can.
+
+We're going to plot. So at this time I don't need to tell ggplot what data I'm using because I'm using the Pokemon data.
+
+Because we're taking the Pokemon data, we're grouping by type one, we're then going to count and now I'm going to plot.
+
+So I don't need in this case to tell it what data we are going to be using.
+
+I still do need to tell it what aesthetics we're going to be using.
+
+Speaker 2:
+
+So.
+
+Speaker 1:
+
+So X is going to be type one, Y, it calls it N. So whenever R does any counting in count, it will call it N. And this time we are going to a bar plot.
+
+So hopefully. No, it doesn't like him, must have X or Y. That's because something's gone wrong there when it's called then is that because I need that to go in.
+
+There X or. Yeah, there we go. So what it does this time is it just takes all that value and you can see it's just going between 0 and 1.
+
+So it just goes between 0 and 1. That's because of the default that happens with the ggplot 2.
+
+And so what we need in here is we need to tell it by using the stat.
+
+I don't know who chose stat, but the stat command and we're going to go identity.
+
+So now we. Now we want the Y because it's going to tell. There we go. There we are. That is the 2025. So is that eight or nine generations of Pokemon and they're different types.
+
+Water is really over representative in the Pokemon type.
+
+I'm actually surprised by that. I thought it would be normal. I thought normal would have the most. Because kind of normal is basic and boring and only weak to fighting types.
+
+So it only has one weakness, which is quite nice. But yeah, Warner types kicking out over there. Bug. There's loads of bugs as well. Why is there loads of bugs? I mean, I get that there's not many dragons because dragons are dragons.
+
+We like dragons. But yeah, water type. Whoa. And the paint can complain to Niantic. Too many water types. We need less water types. But that's really boring, isn't it? It's grey and boring. So should we jazz this one up? Jazz this one up? So what we can do in here is. It's not in there. Within the aesthetics, we can say group. And if I give it type one, it should. Now color. You going to color. I put in the wrong place again. The things in the right. Wrong place. Yeah. I put that in the wrong way. Or is it color? You can. So we press. We use color on our bar charts. We've still got lovely gray bars, like the gray bars, but we now have nice colourful edging to them.
+
+So color will give you an edge to your bars. If we then use fill and we go with type one. There we go. How about that? We like that. Is that pretty? I mean, I don't like the fact that water is pink. That. That feels wrong. I feel water should be blue and Bug is pink. I think Bug should maybe be green, but what else have we got?
+
+Normal should probably still be great. Oh, Poison's purple. That's all right. Don't mind that. Fairy should be pink. Come on. But it's a bit more interesting than our grey, isn't it?
+
+And you can control the colors of the bar. So if you go into. Probably too many for me to do it here. So in the scale, and this time we would be X, but we would be discrete.
+
+There is a palette option and then you can pick the colors for each bar and it will sequentially go through each color.
+
+So if you picked dark green for Bug, it would go dark green and so on and so forth.
+
+So using the palette option, you can control those colors.
+
+But I don't think you've got quite enough time for me to do all of that.
+
+If we go. Yeah, if we take out the stats this time. Oh, no, It like that. Oh, no, it doesn't like that. I've added an extra plus there, which it didn't like.
+
+So. So I need to escape. No, it doesn't like stack. There is an option. So where you see the stacked bar charts, say I always use identity makes a bit more sense.
+
+That may means if you've got, say like the Eurovision data, for instance, if you've got the voting results for each year, you can either stack and have one bar showing all the points, which is then cut in different places to show the amount of points that each country has either awarded or been awarded, depending on where you want to go with it, or the stack Identity will show you the year, but then have one individual bar for each country's points so you can compare that way.
+
+So rather than looking at part of the bar, which bit of the bar is bigger, the identity just spreads it out.
+
+Which personally I feel for interpretation is a little bit more intuitive because you've got the actual bar goes to the height for each one, whereas the stack exact one, you've kind of got to work out that, okay, this one is that much extra than that one and that one's that much extra than any other one.
+
+So it doesn't feel quite as intuitive as having all the bars together like that.
+
+Let's put that back to Identity. Okay, so ident. Am I missing an. I think I am. No, I'm missing a T. So what do you think about those axes labels?
+
+Are they intuitive? N type 1. No, but that's okay because we can control that. So again, we have labs. And so for what should we call the. The X axis will be a sensor. Yes. I've asked you what would be a sensor Name for my RX axes.
+
+Type_1. Sorry. Type_1. No, we're getting away from that. What do you call this one? Supercalifragilicious. I can't spell that. Okay, it's gonna make no sense, but hey, so we're calling the X axis Rainbow because why not?
+
+There he is. Rainbow added to us. And of course we can do the usual. Spell the axis dot X Access dots. That's the ticks. I want the title. This is how many options you have. Title XP elements text. What size should we make that? X axis 2. We're going to be able to read it. What color should we make it? What color? Gray Grey. So just be aware it is Americanized spelling Oh, that's interesting.
+
+I've never tested this. Does it. Oh, it does recognize the English one as well. Okay, that makes me feel slightly better. It is there. There he is. It's really, really weeny right at the bottom. And of course we can change all the axes, labels. If we wanted to change the color, we could change the brakes on the Y axis as well.
+
+And there. Who likes the legend being on the right hand side?
+
+We want the legend there or should we move it? I think we should put it on the top. On the top. Okay. Can we make it backwards as well? We can, we can, yes. Is that in theme? Yep. So inside the theme we can do legend, door, dot. Where did we want to put it? At the top. Top left. We're going to put it top bugs on the left of the chart but on the right of the measure.
+
+Yep. And then we're going to do. Think its direction. I've gone through far too quickly. Let it catch up. In direction. That's horizontal, vertical. We can. We should be. We can reorder it. I just need to remember where it is. You can reverse it going in which one it is. Might have to google that one. I'm not going that one for a while. But yes, you can flip it if you wish. And sometimes it's actually worth flipping it. So one that my PhD student has created, we're looking at statistical power for tests and the lines went down, but then the axes, the legend had them the opposite way around.
+
+So we did flip it because it made more sense. But you can flip that to quite remember where it is.
+
+There you go. There's our legend at the top instead. You can move it left, you can move it right. You can put it at the bottom. You can justify it. So you can put it. We could left justify it and have it over here. We can right justify it and put it over there. You can change the name of the legend. So here it's inherited it from the data. But you can change the legend name as well. I believe you can. Yes. I don't know how to do that off top of my head. But yes, you can put the legend in. In the middle of the plot if you so desired. So as you can see. So base plot does give you some nice plots, but Ggplot opens up a world of abuse of data visualization.
+
+And this is just line plots and bar charts. Within that you've got violin plots. So they're basically fancy box plots that show density as well.
+
+There is a ggplot additional library that will do 3D graphics if you so desired.
+
+Don't laugh. They are hideous. But yeah, why spend five minutes when you could spend hours making truly horrific plots where you've got control over absolutely all of the elements.
+
+So let's do a box plot. So let's take the Pokemon data and. No, I think I should speak ggplot. Pokemon data. A E S X equals height and most of the plot names are quite intuitive.
+
+So box plot gives you a box plot line gives you a line plot.
+
+What else have we got? So there's the violin plot. Does points for scatter. Doesn't do pie charts. There is a package that will do pie charts but statisticians don't like pie charts because of the.
+
+The angle parts. So can't go those. We do contours. Got your error bars. Histograms, maps. So it will do basic maps. If you ever want to lie with data maps are a great way of doing.
+
+Can make certain islands look a lot larger than they actually are in real life due to the projection.
+
+And then you get all sorts of of mis ideas about whether you want to own it or not.
+
+Ribbon plots Smooth will add a regression line to your data.
+
+Whether there should be a regression line or not, who knows.
+
+But you can pop one in.
+
+Speaker 2:
+
+That's quite beautiful.
+
+Speaker 1:
+
+You can also do accounts as well. Wrong. The snake plots where you can Skanki S K A N E Y plots where you can see how much information or how much of something is going into different places.
+
+So I produced one for the port data for Plymouth to show where the vessels were going to and from.
+
+Was horrible because there were lots of different plot.
+
+So we are doing a box plot, aren't we? Box plot. Tada. Here's our exciting box plots. So all Pokemon types all lubed in together. Most of them nicely down here between. What's that going to be? Half of 25. The 24 and a half. So most Pokemon are really, really light. I haven't done this before. And then we got everyone. Who do you reckon that is? Who is that one? What's that? Over 75. Let's find our heavy ones. So Pokemon and filter. Who are our tall Pokemon greater than 75? 1x and Steelix. That checks. They're our tall ones. But if we wanted to we could separate that box plot out into the types so you could see the distribution of heights.
+
+Pokemon types. So hopefully we should see that the bug types might be quite leany.
+
+Steel types if we've got Onix and Steelix are going to be much longer.
+
+Although being a Gen 1 Pokemon art, I'd still refuse to accept.
+
+Accept Onyx as a steel type. He is a rock type, not a steel type. And Jigglypuff are normal, they're not fairy types.
+
+And I will die on this hill. It's a very weird hill to die on, but I'm going to. And with the. The box plot again, we have the same control over.
+
+Is it going to be in there? I want to put it in there. Yeah, that's coal. What color should we make the outline of our box plots?
+
+We've got steel blues, we've got brick reds, we've got violets.
+
+We go. Come on. White. White. And what film color should we have for our. Sorry. Brown. Brown. There we go. Excellent. Now we have a kit kat. So, yeah, that's kind of. I want to just show you what you could do ggplot2, so that this session you can really kind of get down with the data visualization, really start playing with it and make something truly hideous.
+
+And if you wish to submit it for the wall of for shame, please aim it to me by midday on Thursday and we will have a fantastic, fabulous display of really horrible plots.
+
+So that was the coding bits I want to do today. The rest of it is going to be lab session for you to get on with some data visualization and I will push your horrendous code.
+
+I'm not going to take credit for this code. This is your code. So I'm going to push that up to GitHub so it is there for you right away.
+
+Where are you. Today? Oh, it's gone. Not saved yet. Where are you? There we go. So the. The code has been pushed up to the GitHub repository.
+
+So do you want the code is this or. I'll be around in a minute for the scanning. Don't worry. Rock. One.
+
+Speaker 2:
+
+Okay, so question four. The persistent friendship.
+
+Speaker 1:
+
+Yes.
+
+Speaker 2:
+
+So I got like a like.
+
+Speaker 1:
+
+Because you said like.
+
+Speaker 2:
+
+Oh, like you pick what you consider personal.
+
+Speaker 1:
+
+Yes. Yeah, so I did all that. It's fine.
+
+Speaker 2:
+
+It's like a very simple question because you mentioned points like the way that I did it is that.
+
+And it was like the pair of them and then I later draw like the points that one like country A to country B and then like country B to B.
+
+Speaker 1:
+
+Yeah, you could do it that way because quite a lot of them are reciprocated.
+
+Speaker 2:
+
+Yeah.
+
+Speaker 1:
+
+So just be careful. You're not missing any relationships that are only one way.
+
+Speaker 2:
+
+Oh, you still want the one way?
+
+Speaker 1:
+
+Yes, because there could be countries who are There are.
+
+Yeah, that's the thing. There are.
+
+Speaker 2:
+
+I think one of like mutual ones.
+
+Speaker 1:
+
+No, no, You weren't as mean as you could have been on that one.
+
+Or have I got that to come. Worry. We're break. We are. Yeah, we break and then we're going into a workshop.
+
+When should I start working on the report? When we've got your set. When you have your set exercises. Get that out of the way first. Okay, That's okay. You've got plenty of time. So don't panic. It's not due until May. Yeah. Oh, that's in Spain. Yes, because that's in that year there were four women.
+
+Feel free to find it for me on the modules. But. Is. Obviously for this one it's no AI. Yes, yeah, yeah, because for this one I said no AI.
+
+So yeah, you haven't used AI. So. Yeah, but yeah, Yeah, I'll get that. It. Is, isn't it? Make sure the pile want to import. These two countries here outside of these years are considered independent.
+
+But during the time they're joined and they vote as such should they be considered joined.
+
+So yeah, keep. Keep the data as it is. They're joined in the data, consider them as one entity where they split.
+
+Consider them.
+
+Speaker 3:
+
+Isn't that a loaded question?
+
+Speaker 4:
+
+It's up to you how you define a load system. I've got a kind of range in my head. So as long as it's clearly.
+
+Speaker 3:
+
+Of course they have a long overdue seven. Contest.
+
+Speaker 4:
+
+Given another country point in at least.
+
+Speaker 3:
+
+A third of those you might want to go stronger. 50% sense all this much. So actually across all of the.
+
+Speaker 4:
+
+I know there's a friendship here that didn't make it that year.
+
+Speaker 5:
+
+Okay, so just anything reasonable. But it doesn't have like the interpretation is.
+
+Speaker 6:
+
+Interpret is. Yes, that's fine.
+
+Speaker 4:
+
+Somewhere more than once.
+
+Speaker 5:
+
+Also, I'm assuming it was right to kind of clean the data.
+
+Speaker 7:
+
+Because there.
+
+Speaker 5:
+
+Are some issues with that that I found.
+
+Speaker 4:
+
+There is.
+
+Speaker 6:
+
+So which set of exercises are we doing?
+
+Speaker 4:
+
+So it's workshop nine, date of innovation.
+
+Speaker 6:
+
+Part two, Workshop nine.
+
+Speaker 3:
+
+Does that clear up?
+
+Speaker 5:
+
+Yes.
+
+Speaker 7:
+
+Hi. Thank you. I just want to ask. So it's all different. What for word count, do you give like 10%?
+
+Speaker 8:
+
+Yes.
+
+Speaker 7:
+
+That's great.
+
+Speaker 8:
+
+Yeah.
+
+Speaker 3:
+
+Plus, minus 10.
