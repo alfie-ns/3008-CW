@@ -1,15 +1,19 @@
 COMP 3008 SET EXERCISES (Neo4j Queries)
 Version: 5.24.0
 
+- [ ] work out N in query 3 or 4
+- [ ] allowed to check with google that the queries are correct 
 - [ ] talk about results from Neo4j
+- [ ] remove anywhere in the code where a space is not needed
 - [ ] persistent friendship: continuous between two parties
 - [ ] talk about and perhaps cite maths
-- [ ] change to .txt file
 - [ ] manually check the results are correct despite working
 - [X] Write in LaTeX
 - [ ] remember to utilise the `lecture-notes.md` from ALL the relevant lectures, dynamically whilst making the coursework
 - [ ] Go as far as conceptually as possible, as far complex as the subject goes
 - [ ] Make the code work ASAP and start talking about it using what's learnt in the module
+
+- [ ] CHANGE TO .txt
 
 The "Year Before" Pattern: The central hint for the problem is to look at data from "A year ago" or "The year before." You must identify a specific pattern linked to this timeframe.
 
@@ -22,17 +26,17 @@ REMOVE REMOVE REMOVE BEFORE SUBMISSION
 
 ---
 
-Neo4j: a graph-database management system that stores data as nodes (entities) and relationships (connections between entities), thereby enabling efficient traversal of highly connected datasets wherein traditional relational joins would instead be computationally expensive. Unlike tabular databases, Neo4j represents data as a property graph; nodes and relationships can hold key-value properties; queries are expressed in Cypher, a declarative pattern-matching language.
+Neo4j: a graph-database management system that stores data as nodes (entities) and relationships (connections between entities), thus enabling efficient traversal of highly connected datasets wherein traditional relational joins would be too computationally expensive. Unlike tabular databases, Neo4j represents data as a property graph; nodes and relationships can hold key-value properties; queries are expressed in Cypher, a declarative pattern-matching language.
 
 SET-EXERCISE 1.
 Q: "Create a Neo4j database to store the data comprised in the CSV files. The database should respect the data model displayed in the example in the figure below, please note that the image below has had some nodes hidden for clarity. You have to provide all the commands needed to create the database and populate it with the data in the CSV files, and you must provide them in the exact order you propose to execute them. If you create indexes, you must also include the commands for index creation. Your database will be recreated, and the only way to do so is by following the commands that you will provide, in the order in which you provide them."
 
 1.1 Data Model
-The database respects the specified data model, using intermediate nodes (Entry and Vote) to store detailed attributes to adhere to the principle of "no properties on relationships."
+The database respects the brief-specified data model, using intermediate nodes (Entry and Vote) to store detailed attributes to adhere to "no properties on relationships."
 
 The model centres on Year nodes representing each contest, connected to Location nodes via HOSTED_AT. The winning entries are modelled as Entry nodes (storing song, artist, running order and total points) linked from the year via Winning_Entry and to the performing country via PERFORMED_BY.
 
-The voting data uses a Vote intermediate node containing the `points` and `points_type`. Country nodes connect to the Vote node via GAVE and TO relationships. Each Vote is linked to its Year via Voting_Result. This avoids placing properties on edges, ensuring the graph remains in a valid property graph schema without data loss.
+The voting data uses a Vote intermediate node containing the points and points_type. Country nodes connect to the Vote node via GAVE and TO relationships. Each Vote is linked to its Year via Voting_Result. This avoids placing properties on edges, ensuring the graph remains in a valid property graph schema without data loss.
 
 1.2. Database Creation commands
 

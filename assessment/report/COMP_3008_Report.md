@@ -30,6 +30,20 @@ header-includes:
       }
 ---
 # TODO
+- [ ] “expectation-maximisation’ algorithm when imputing missing data 
+- [ ] ‘missingness’ 
+- [ ] ‘concluding’
+- [ ] ‘effectively’
+- [ ] and thus, it is asymptotically unbiased 
+- [ ] principle components (missing-data lecture)
+- [ ] don’t copy Lauren’s stuff just imitate her lecture words etc
+- [ ] deal with missing data in the code and comment to talk about this 
+- [ ] 
+
+- [ ] utilise lecture transcripts 
+
+- [ ] heavily talk about the underlying maths of the code via latex
+
 - [ ] ensure the plots look very distinct like I put a lot of time in changing how it looks eg colours
 - [ ] in the code remove any spaces that are not needed 
 - [ ] Don't use Word Clouds for Categorical Data

@@ -1,0 +1,465 @@
+Data.
+So this is going to come in handy for the report element.
+So what we're actually going to do today is look at missing data.
+So what do we mean by missing data?
+What does it mean to be a missing piece of data?
+How do we get missing data?
+And then how are we going to deal with missingness?
+How do we deal with that missing data?
+So by approximately 5:00 clock today, you will be able to know what it means for different types of missing data.
+So we're going to look at some data set together, at the missingness in it and how we can deal with it, and then select an appropriate method for dealing with that missingness.
+Because as we will see, how you deal with that missingness will have an implication onto the assumptions that you're making and the conclusions that you are drawing from that data.
+I think the title of the slide pretty much says it all.
+Missing data.
+It is a problem to deal with and unfortunately in large data sets it is common.
+The larger the data set, the more missing data you're going to naturally have.
+So essentially what missing data is, is data that's not there.
+It hasn't been recorded, it is missing.
+Most data set will contain missing values to some degree.
+So the data set that I gave you in the second year for the AI module, I cleaned first, so I removed any missing values from that, so you didn't have to deal with them slightly nicer like that in the second year.
+Also, I don't tell you how to deal with missing data, so it'd be slightly unfair.
+Concluding how or why that data was missing is a really important step because that's going to tell us how we're going to deal with it.
+Also, how much of the data is missing can also tell us how we're going to deal with it and the missingness is going to affect us.
+If there's huge amounts of missingness, how can we accurately assume that what we're seeing is representative of a population?
+Sometimes missingness tells us something, as we will see.
+So we do need to be careful how we miss it, deal with missing data and when we draw our conclusions.
+That's why there's a section in your report dedicated with marks to explaining how you're dealing with missing data and therefore what the problems could be when you make conclusions from it.
+So why do we get missing data so common?
+Why do we get it?
+So four main reasons that we get missing data most one being equipment failure.
+So if you're deploying sensors in an environment, things go wrong, things break frequently, sensors Go down, networks drop out.
+We have Loreland network here that we deploy sensors on and there are nice big gaps of NA where the sensor has failed, not been able to connect to the network and so sent nothing back to the database.
+So equipment can fail.
+A participant doesn't respond.
+So if we're dealing with people, how many of you enjoy filling out surveys?
+Yeah, exactly.
+There are some weird individuals that do enjoy filling out surveys, but some, most people don't, especially if they're really, really long.
+You get bored halfway through and drop out.
+So it could be that somebody has started to respond and then finished responding and can't be bothered anymore.
+So part of their responses are not recorded.
+Or it could just be that they can't be bothered and don't do anything.
+Now I'm not going to say that researchers are completely infallible.
+We do make mistakes occasionally when we're inputting data, we can input data incorrectly.
+If you're transferring information across from paper based records to a more electronic system, errors can be made and the data collection was completed incorrectly.
+So the person actually collecting the data hasn't done it in the correct way and therefore it can't actually be used because it has not been done properly.
+There are other reasons that missingness can occur.
+It could be that, as we will see, there might be leading questions and where you answer no to a particular one or yes to a particular question, you then might not have to answer the next set of questions.
+So, so what are they here for?
+He's here for me.
+Right?
+I'd better get that room.
+So it could be that it's missing, kind of on purpose because that response didn't need those follow up questions.
+So you do need to ask why?
+Why is it missing?
+So we have different types of missing data, different flavors of missing data.
+How we deal with them, what they are, will affect how we're going to deal with them.
+The best case scenario is something that's called missing completely at random.
+So that is a variable that isn't in your data set.
+The reason it's not in your data set is not due to any of the variables that you're looking at.
+It's not due to any of the methods of which you try to collect that data.
+It's just, just not there.
+So it's independent of both any observable variables and any observable parameters of interest.
+Completely at random.
+Totally.
+When we have completely random missing data, any analysis you perform on that is unbiased because the missingness is not related to anything.
+It's just not there.
+Your results are unaffected by its missingness.
+They're not related to any study variable.
+Essentially what we end up with is the data set that you've got is a random sample.
+However, this is a completely unrealistic assumption to make.
+It's a very strong assumption to make and it's one that we can't actually make that often in practice.
+Hooray.
+One however that we can take tend to make do tend to make is what's called missing at random.
+So not as strong as missing completely at random.
+And it is assumption that you can't actually statistically verify.
+If somebody tells you this data is missing at random, you kind of have to believe them because we have no test for it to be missing at random.
+So we must rely on the reasonableness of the explanation given to the data being missing.
+So people dropping out, people do randomly drop out.
+Fair enough.
+That's an accurate assumption to make.
+Depending on how we deal with it, we can introduce bias in this method.
+So do have to be careful with what you do to the data to try and keep it as accurate as possible.
+So just be aware that yes, okay, missing at random, but we can put our bias on it.
+But if we use full information maximum likelihood then because that is an estimating statistical method that looks at at fitting model to the data that one is supposedly asymptotically unbiased.
+But you do need very large data sets and you do need very small amount of missingness to try and be as efficient as possible.
+So an example of data being missing at random is if you've got a doctor surgery and one of the parameters they need to collect is your weight.
+You step on the scales but the battery's gone flat.
+It's just, it's that missing data tells me nothing.
+The battery went flat.
+So you know, next patient in between when they catch a small break when it got new battery, put it in scales, off we go.
+And then suddenly everyone else was okay and they collected data that way.
+Just happened to be that when I walked into the surgery, battery flat, couldn't do anything about it.
+Of course we don't know that.
+That is unfortunately one of the things we don't know.
+But we could just assume, you know, flat battery gone.
+So if data is missing at random, well of course data could be missing not at random or also called a non ignorable no response.
+So it's a no response, but it tells us something, we do need to include it.
+So anything that is not missing completely at random, very rare for it to happen or we decide it is not missing at random.
+Could be missing not at random.
+So an example of this would be.
+So back in our GP surgery, we're weighing people.
+This time the battery's not flat.
+Unfortunately I am too heavy for the scale.
+It's just not going to record my weight because it just goes, no, Lauren, too heavy, forget it.
+So now it's telling me something.
+It's now telling me that, okay, you're too heavy to be weighed by this machine.
+So there is useful information hidden within that missingness.
+So there is a nice.
+This is a chapter in a book actually that says how missing and or distorted data about demographics could be indicators of human rights violations.
+So, and a favourite I've got into a bit of an argument with a friend I went to school with who's doing a different PhD somewhere else about.
+They rate quality of life.
+So things like, you know, males tend to die at work because males tend to do more riskier jobs working on building sites than women do.
+So looking at the traditional indicator, I can't think what that survey is called off the top of my head, but it'll probably come to me in the break.
+But the traditional way of looking at inequality between the sexes, there is no quite right way of doing this.
+Because if you look at manual jobs, yes, they tend to be male dominated because of the build of male shaped bodies.
+Caring roles tend to go towards more females.
+And there was a bit of a debate about how equality should be looked at and this person referenced a paper and one of the authors looked at education for girls in lots of different countries and took it all as red.
+And they said we're going to use this indicator and for all the countries and somehow countries like Afghanistan ended up in like the top percentile for education for girls.
+Why?
+Because they took the data from everywhere else.
+The fact that the data was missing girls education over the age of 10 was not taken into account by the authors.
+Now of course that missingness could tell you something.
+It could tell you about the, the views or maybe the human rights violations that could potentially going on in that particular country.
+So there were.
+I'm not saying the way that we do equality is the correct way.
+I'm not saying that one was completely, completely correct either.
+But both have their flaws and understanding why data could be missing and perhaps excluding that parameter from your hypothesis might actually be better and give your argument more grounds to stand on because he got attacked quite strongly on that one saying how could this be a fair measure when you haven't actually Got data from all your countries.
+You're just assuming all the countries are the same and you shouldn't assume.
+There's a really famous saying about that.
+Sometimes we actually want data to be missing, so there is structured missingness to it.
+So there is an association to why data is missing, the most common one being the leading questions.
+So the one we're going to look at in the verb session I think is for smoking behaviour.
+The first question is what is your smoking behaviour?
+And of course you can say, well I ain't telling you because you're nosy.
+Or you could say, well I don't smoke at all.
+I smoke this much going up through.
+Of course, if you don't smoke, are you going to answer the next question, which is how many cigarettes do you smoke a day?
+Probably not because you don't smoke.
+So that is structured missingness.
+The values have an association with the question before it is explicit within that.
+What it can also help us do is explain how the sampling method took place.
+Could there have been something missing from that sample?
+Maybe a demographic that was missing, Maybe an area of question questioning that wasn't included when we actually collected the data.
+If it is completely missing, then it can also reflect characteristics of that population.
+Oh, that's interesting.
+There's no data in this area.
+Is that something to do with whatever it was?
+We were looking at it.
+But there could be some bias inherent with the reason why some of the data could be missing in patterns.
+So you might have implications for fairness with your machine learning models.
+If there is structured missingness, think about how your machine learning method is working and is it going to interpret that missingness in a way you don't want it to and bring in bias into your models.
+We tend to characterize missingness with those first three.
+They're the most common ones you'll see missing completely at random, missing at random, missing not at random.
+However, these are actually, believe it or not, still open research topics within statistics.
+There are statisticians out there who spend their researching live looking at how we deal with these three types of missing data.
+In fact, I've got a PhD student who's just coming up to writing up.
+We were going to be looking at how missingness in large population longitudinal studies affects any results and how we can deal with it.
+But as other PhD projects do it slightly into predicting and modeling general and mental health out of the pandemic.
+Weirdly ignoring data, missing data can be part of the design itself.
+We can actually decide to go, you know what I'm going To miss that data on purpose, it is a necessity.
+We typically do this by having a random sample of participants and we only give them a set of the questions or the items that we are particularly interested in.
+The idea here is to be able to, if we have structured missingness, so we have a generalized population in which we know some areas are going to be missing, if we can make assumptions that it is a kind of homogeneous population, we can use the subsets that are missing from the various sub populations to inform the whole information.
+So rather than have a large population and then everybody decide to miss out, one piece of information isn't helpful.
+We can have subpopulations where hopefully they're not exposed to all the questions, they keep engaged, and we can make some assumptions about the missingness.
+So how are we going to deal with it?
+Well, we've got three main omission, imputation and analysis.
+What you do will depend on their type of the amount of missing data you have.
+So let's start with the first one, omission.
+This is the simplest one.
+This is essentially, if it's missing, it's gone.
+I don't care, I'm going to reject it from my data set.
+You can do this in two ways.
+You can either say if a row has any missing data in it.
+So if you've got 450 variables, if one of those variables is missing, you decide to chuck out that whole row of data gone into the ether.
+Perhaps not the most sensible way of dealing with that large data set.
+What you could do is take subsets that you're interested in and any of those that have missing check, chuck them out, because it could be that the missingness is not actually in a variable that you're interested in.
+So you'd be chucking away good data.
+But it is the most easiest way of doing it.
+We only have complete cases, all the others are disregarded.
+If you have a small amount of missing data, and of course small is up for interpretation, then this is probably the best method because you don't have to worry about any bias creeping in.
+You've got whole complete cases to work from.
+Small will depend very much on the data set.
+If you've got a data set of 10 and one has one missing entry, you're effectively chucking away 10% of your information.
+If you just get rid of anything that's not complete.
+If you've got a million rows of data and five of them are incomplete, chucking away five bits of information out of a million, you've still got 999,995 to work with.
+That's still heck of a lot of data.
+So it's kind of very much up to you what I tend to do.
+So working with a data set that was given to me by Poole Harbour for five vessels, it was in the, was it 800,000 data?
+There were some missingness in it and there were some instances where their pool harbour commissioner boat ended up off the coast of like Indonesia, which felt very weird.
+So I removed those, I checked how many there were and it equated to about 0.00111% of the day data set.
+So I was like, yeah, I don't really care about that much.
+That's not affecting my data overall.
+It's such a small amount.
+So finding out the percentage of data that is missing can help you inform that decision.
+If you're talking 2, 3%, maybe up to 5%, is it going to make that much of a difference?
+Probably not.
+You start getting up sort of 10, 20 and above, maybe start questioning if you should be getting rid of that much of your data.
+Of course, if 50% of it is missing, really start panicking.
+We do tend to avoid this one where possible.
+Chucking out information is not really what we want to be doing.
+Another common one is invitation.
+So essentially we guess, here's what we're going to do, we're going to fill in the blanks, not in a random way, although you could do it in a random way.
+We try to be clever about it and usually what we do is if they are numerical, we will have a look at the distribution of them and go, there's not many extreme values, so I'm going to take them in mean and for every missing value you put the mean in.
+If you do have extreme values, then you might be more comfortable putting the median in, which isn't quite so perceptible to any outliers.
+But you are just making a guess, an educated guess, but that's just what you're doing.
+So it doesn't usually take into account the actual structure of the data that is still there.
+You are performing a very quick analysis, finding the interquartile range, finding the quarters median mean and going, yeah, that will do.
+Anything's missing, chuck it as that value.
+So for the last one, the expectation maximum maximization algorithm, this approach looks at the data as a whole.
+So whereas imputing kind of the means does look kind of individually, because you're looking at the actual data and what goes into it, this one does it as a Whole and imputes that way.
+So could argue potentially a little bit more reliable than just using the mean median.
+Or if you've got categorical data, you might want to use the mode, the most common one, but it ain't perfect because you are making a lot of assumptions.
+Another way you could do it is if you do have the good amount of completeness in your data, look at the distribution and then randomly sample from that distribution and then just impute that value that way.
+People don't tend to like do that one just because of reproducibility.
+If you are randomly sampling from a distribution, then there's no guarantee you'll get the same numbers each time.
+So that might screw up your analysis.
+So median and mean are the most common ways because they don't change.
+You've got that data, the mean will always be the mean for that data and then probably your results are reproducible.
+You just kind of hope that the central limit theorem holds and that eventually everything will look like a normal distribution anyway.
+That's what we hope anyway in the stats.
+Or we can go for analysis so we can actually look at all the information we do have and then fix it that way so we don't impute any values beforehand.
+So we're not going to be distorting anything.
+We're just using the information that's there.
+So we have generative approaches.
+So expectation maximum, that is either a maximum likelihood or a maximum a posterior experiment that's iterative using optimization to find the best fit with the full information.
+What we assume perhaps incorrectly sometimes is there's a distribution underlying and then if the set was observable it will come from that distribution and go that way.
+You can also be clever and go, I don't actually want to think about any of this.
+Pick a machine learning algorithm that will deal with missing data for you.
+Some such algorithms are called cart.
+So the classification and regression trees will deal with missing data without you having to worry about it, which is quite nice.
+There's also Mars, not the chocolate bar, unfortunately that's multivariate adaptive regression splines a bit more statsy than the learning ones.
+And then we also have prim, which is the potential patient rule induction method.
+So that one's more commonly used for statistical health statistical methods and dealing with patient data that way.
+So we don't have to think if we don't want to about it.
+But it is always good to keep it in mind.
+Why do I harp on about missing data?
+Well, think back a couple of weeks now when we did recommender systems.
+To get a good recommender system, you have to have a large data set.
+If you have a large data set, you got missing data.
+It's an important side effect.
+So not all customers will rate everything.
+Not all customers will like everything.
+Not all customers will be bothered to leave a rating for everything.
+So we need to find a way to put those missing values in before we can put it through our recommender system.
+Otherwise our recommend system is going to be rubbish.
+So this is an imputation method and it's called matrix completion and it's based off principal component analysis.
+So we can use principal components.
+Because the nice thing about principal components components is that we know in the first principal component you've got all, not all variation, but a large amount of the variation in the data.
+We then go to the second principal component.
+We've then got the next step down of variation in the data.
+This approach is only suitable if the data is missing at random, which I think for recommended systems is a pretty safe assumption to make.
+Not everybody will have used a product, not everybody will want to leave a rating.
+So it is going to be pretty random.
+What it aims to do is exploit the correlation between variables where that does exist.
+Once we have a complete matrix, that is then what we can use in our favorite statistical method or favorite machine learning method.
+But essentially what it boils down to is this beautiful optimization problem where we are looking to minimize.
+So we have A and B are the responses.
+This could be huge.
+O is the observed matrix, so where we actually have information in it.
+So here are our observed values.
+M is our principal components.
+And essentially what we want to do is make this as small as possible.
+So the first M principal components score, they'll be the loading vectors.
+So they should have the best approximation for the data matrix.
+And what we want to do is put some future values which makes that as small as possible.
+Solving this problem, you might guess, is actually really, really difficult.
+Well, I don't know.
+Probably no two summations of multiplications, squaring them.
+Not the most horrendous equation I think I've ever shown you.
+I think I've shown you some pretty terrible ones, but it is difficult.
+So what we do instead is take an iterative approach and try and solve that.
+Because actually what the iterative approach does is gives a pretty darn good solution.
+So how do you do that?
+So step one, I'm going to create a big matrix and then I'll put humans in it and pretend they're alive.
+No, that's different.
+Matrix, sorry, complete data matrix.
+I've got AJ elements.
+So if the element has been observed, it's just going to be a little X.
+If for whatever reason, who knows that actually I don't have an observation for my little xij, so it's not an observed in X, I'm going to give my little X a bar just to make sure the difference.
+So he doesn't have a bar, he's been seen.
+If he does have a bar, we're guessing.
+So this is creating a matrix of the actual observed pairs so we know where we have the pairing information or not.
+So once we have that, we're going to start our little loop up.
+So we're going to solve a very similar problem to what we saw above.
+This time we're not going to have one summation at the front, we're going to sum over those pairs.
+So here is my matrix of a mixture of observed and unobserved and the principal component analysis of it.
+And we're going to compute those principal components.
+And during that we will get approximate values for the elements that we haven't seen.
+It will give us some numbers for those.
+So what we do then is we'll then set our matrix equal to those approximate values we get from that principal component analysis.
+And then the objective is to minimize this as much as possible.
+So when we've got these values in, we're looking for the difference between what we've observed, what we're trying to, trying to see, and make that as small as possible.
+When this gets to a point where essentially it's flatlined, not like dead dead, but flatlined, then we go, okay, we're going to return that matrix of predicted values and pretend that those are the actual values we would see if somebody had wanted to rate our item.
+So that's what the algorithm is doing.
+It's just principal component analysis, making sure everything's going to minimize as small as possible.
+No, that's, that's never going to work, Laura.
+Of course, craziness.
+But it actually does.
+So Netflix proved this, showed it.
+This is quite old data now.
+So they had everybody who wanted to rate content between 1 and 5.
+I believe 1 was, didn't like, was loved.
+I think I got that the right way around.
+But nobody has seen everything.
+This data was taken from 2017, I believe.
+Double check that one.
+So There was only 480,189 customers and there were 17,770 movies available on Netflix.
+So there was 99% missing data.
+You're not going to want to chuck away 99% of your data.
+You are not going to make a good recommender system on 1% of data, I can tell you that now.
+So they were like, right, we, we need to find a way of doing this.
+So the idea is that if you have a new customer who has rated, well, not your customer, a customer that's rated some things in common with another customer, there's going to be a bit more overlap than just that.
+This is what Netflix do use to make good recommendations.
+And the idea there will be overlap, so they can use that overlap for a new customer to try and predict what they're not going to like.
+So in this case, the principal components have really nice interpretation, which is something generally lacking from machine learning.
+So we can actually interpret those principal components as clusters or cliques.
+Genres and principal component models are actually the center of loads of different recommender systems, not just Netflix.
+But of course the data behind it is massive.
+The models behind them are massive.
+So the algorithms, a lot more technical than just that principal component, one that was a very early one, can exploit that high level of missingness to perform essentially, it's pretty good.
+So I want a bit of a practical example to show you what we mean by missingness in a minute.
+So the data is up on the dle.
+Okay.
+So missingness is going to be there.
+If you're working with large data sets, you are not getting away from it.
+I'm very, very sorry.
+It can be an issue.
+So you need to really think carefully with how you're going to deal with it.
+You know, 70 out of the 70 marks available for your report, I believe I've put 10 on how you deal with that missing data.
+So trying to emphasize this is an important area that you need to think about.
+There are different ways of dealing with it.
+So we can pretend it doesn't exist and ignore it.
+If we have a small amount of missingness, fine, that's not going to make much of a difference.
+We can impute different values or interpolate use means averages to put in that missing data that does come with a weather warning because it can bias your results.
+Some algorithms can deal with it straight off the bat.
+We don't need to worry about it, which is quite nice.
+But you need to explore the missingness.
+So select the most appropriate method and then really key.
+Keep in mind that anything you derive from data that data sets that have missed large amounts of missingness could be flawed.
+There could be edge cases which you can't pick up because that data is missing.
+You could be missing key influences from variables because they just isn't there.
+So always kind of think about what could this missingness imply?
+What does the imputation or how can the invitation affect the different bits that I'm doing?
+So if I pause the recording here and get R set up, should I get a 10 minute break now before I go into the coding part, get some nods?
+Censored values.
+So if you're doing studies where especially transplant studies tend to get these a lot where people can die, unfortunately they call sensors.
+We're looking for events for things happening.
+The famous one is kidney transplants, because kidneys tend to be really great organs to transplant.
+They last a really, really long time.
+And often when a transplant recipient dies, it's not because the kidney has failed, it's because they have kind of failed as a person.
+So, yeah, the interesting thing we're looking for is has the kidney failed?
+But we can't see if the kidney failed because the whole ass human has failed.
+So censoring is a slightly different type of missing and doesn't tend to get included with missingness.
+On that happy note, let's deal with some data that has missingness in it from COVID I really hope that none of you come here to be cheered up because I fail miserably.
+So libraries that we're going to use today, I'm going to cheat and put in so and use a library called tidyverse.
+You might notice that a lot of my R code begins with the tidyverse, because that is a huge package which contains all these very different R packages.
+So I don't need to read in read R, I don't need to read in ggplot, I don't need to read in Lubidates.
+They're all nicely packaged in the tidyverse.
+For me.
+I get a bit lazy and just load all them in at once with the tidyverse.
+So we're dealing with the COVID data.
+So read CSV.
+What did I call it?
+Covid 181.
+Why are you not typing?
+You'll notice that you've got wave three for the tutorial.
+So a nice large data set.
+So nearly 17,000 observations in this one.
+This is collected from the.
+I think it's the next step.
+So we do longitudinal surveys in the uk.
+All this data is accessible through your university account because we are signed up to the UK data service.
+So you can get hold of the raw data for this yourself.
+This data had a lot of variables in it.
+Same with the wave three that you've got.
+I've condensed it down so you didn't have to do all the selecting yourself.
+You've just literally got the columns that you are interested in.
+So here I've got drinking frequency and then the number of drinks.
+Let's have a look at the missing data.
+So I'm going to tabulate Covid data.
+So if I just tabulate the missing data, we can get A nice output of what is going on value wise.
+So I can see all the different totals for the drinking and the number of drinks.
+If we want to look at just one particular column, I'm going to use the dollar sign just to extract that one.
+And so I've got.
+Them all out for me.
+But of course if we add all this up it's not going to come to 16,777.
+As we can see from here I got some missing data and did I probably write down, I gave you the data dictionaries.
+I really stupidly didn't give myself the data dictionary for this.
+So for drinking frequently it is one I think is not very often should have written it down.
+There are codes for them.
+One of them is the code for missing which I believe is -9.
+They don't actually have any in or it's interpreted these as NAS anyway.
+And then 1 I think 1 is not at all 5 is a bit more frequently.
+But from my table up here we can see that there are people who are claiming that they drink but yet not telling us what number of drinks they have.
+Little liars.
+So what are we going to do with those missing values?
+So for the drinking frequency it could be, I think maybe, maybe you've got different ideas on this to me, which is absolutely fine.
+My interpretation is not the right one.
+So my interpretation would be looking at the question.
+The question is what is your drinking frequency?
+Some people who don't drink might say, well I don't have a drinking frequency, so this question doesn't apply to me.
+If I ignore the fact that there is actually an option to see say no drinks, they might just go well, I don't drink.
+I'm going to ignore that question.
+Probably a valid assumption to make.
+It could be that somebody doesn't actually want to admit they have a drinking problem as well.
+I'll leave that up to you.
+So what I can do is I'm going to go on the assumption that my assumption doesn't have to be your assumption that those who've got NA values are ignoring the question because they don't drink.
+So I 1 I believe from top of my head is that they don't drink.
+So I am going to impute values NA with one.
+If anybody got an na, they're going to have a one.
+So we're going to do Covid data frequency.
+So I'm going to replace na, I'm going to replace X first Covid data extracting the drinking frequency.
+Got that the right way around.
+So let's Go to the handy help and pull it up.
+You could also use mutate, which would make a new column.
+Index.
+Buddies.
+I don't want the indices, do I?
+No, I don't know the indices.
+You could pull out the indices by using a Boolean true or false and go that way.
+But let's use G sub and use a G sub function instead.
+So that's substituting them in.
+So the pattern that I want to substitute is NA.
+I'm going to replace with 1, and that is in Covid data.
+And so now it's changed it to frequency.
+That.
+Because I didn't need that in nas.
+Because it doesn't mind NA being like that.
+No, now I change all to nas.
+Of course it does.
+This is the dangers of live coding, because you cannot remember off the top of your head.
+But essentially what we're doing is replacing values with sensible ones.
+So I think it's fairly sensible that we replace it that way.
+But you could also equally validly give everybody a drinking problem if you wanted to.
+Up to you.
+They could be liars and not wanting to admit it.
+Liars.
+I'm joking, then.
+Likewise with the number of drinks we table the number of drinks, Let's find out how much people were drinking in the first wave of COVID only goes up to 5.
+I reckon there's a load of liars in this data set, although it is only wave one.
+Maybe we're still on our healthy kicks in wave one.
+Maybe it's different for wave three.
+We're all depressed and sick of homeschooling, drinking three bottles of wine.
+Okay, no, that's just me.
+So we've got 8,000 people missing, so probably the lowest frequency of drinking.
+Do we believe them?
+So here you might want to go, well, three is the middle value in the range of five, so replace them all with that.
+If five is drinking more frequently, how often are they going to be doing one drink, two drinks?
+So you might want to just go, right, well, let's put them all as three.
+Middle of the road, but you could eat badly.
+Go, well, one is the most common one for people to pick.
+So let's say give them the benefit of the doubt, they're only drinking ones and give them one.
+Okay, so what I'm trying to emphasise is that there is no right way of dealing with the data.
+It's very much up to you, your interpretation of why it should be missing.
+But producing these tables, producing bar charts to show the level of missingness in the different columns is also a nice visual way of showing perhaps what was going on.
+So this data I actually blatantly just stole from my PhD student.
+And actually, you are doing exactly the same as what she did when we noticed that in the smoking questions, the missingness was exactly related to those people who said they didn't smoke.
+That is something that my PhD students are.
+You're doing some of my PhD students work.
+Not for her.
+She's already done it.
+But it was the inspiration for this tutorial.
+Okay, so make sure you tabulate the data, have a look at the missing values, look at the range of values that you can get that are actually present, and decide from there where you're going to go with that.
+I'm going to pause that there.
+I will rectify the toes and get it working before I push it up.
+But now for these last kind of.
