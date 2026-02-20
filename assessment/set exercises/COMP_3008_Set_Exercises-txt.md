@@ -117,13 +117,92 @@ Q: "Produce a Neo4j query to list all the countries that have won the competitio
 SET-EXERCISE 3.
 Q: "Produce a Neo4j query to find all the host countries which then also went on to win the contest that year. The query should list the winning nations, the song they won with and the year in which hey won returned in chronological order. You should submit the query and the result with the columns appropriately named."
 
+    // Eurovision's implicit hosting rule: the winner of Year N hosts Year N+1.
+    // A "host winner" is therefore a country that won Year N (earning the hosting
+    // right) and also won Year N+1 (the contest it hosted).
+    //
+    // Implementation: traverse two Winning_Entry chains anchored on the same
+    // Country node (c). The WHERE clause enforces strict year adjacency (N+1),
+    // which maps directly onto the hosting rule without needing a separate
+    // HOSTED_AT traversal.
     MATCH (y1:Year)-[:Winning_Entry]->(:Entry)-[:PERFORMED_BY]->(c:Country),
-      (y2:Year)-[:Winning_Entry]->(e:Entry)-[:PERFORMED_BY]->(c)
-    WHERE y2.year = y1.year + 1
-    RETURN c.name AS Winning_Nation, e.song AS Song, y2.year AS Year
+          (y2:Year)-[:Winning_Entry]->(e:Entry)-[:PERFORMED_BY]->(c)
+    WHERE y2.year = y1.year + 1    // y1 = Year N (the win that confers host status)
+                                   // y2 = Year N+1 (the hosted contest)
+    RETURN c.name  AS Winning_Nation,
+           e.song  AS Song,
+           y2.year AS Year
     ORDER BY Year ASC
 
-This query works on Eurovision's hosting rule: the winner of Year N hosts Year N+1. By matching countries that won in consecutive years (y1 and y1+1), you can identify cases where a country won whilst hosting, since their y1 victory made them the y2 host the next time round.
+3.1 Expected results (5 rows, verified against raw CSV data):
+
+    | Winning_Nation | Song                   | Year |
+    |----------------|------------------------|------|
+    | spain          | "Vivo cantando"        | 1969 |
+    | luxembourg     | "Tu te reconnaitras"   | 1973 |
+    | israel         | "Hallelujah"           | 1979 |
+    | ireland        | "In Your Eyes"         | 1993 |
+    | ireland        | "Rock 'n' Roll Kids"   | 1994 |
+
+    Note: Country names are stored lowercase via toLower(trim(...)) in 1.2.2.
+
+3.2 Empirical cross-check (raw CSV evidence for each result):
+
+    1969 Spain:     Won 1968 ("La, la, la", London) → hosted 1969 Madrid (Spain) → won 1969 ("Vivo cantando") ✓
+                    Special case: 1969 was a 4-way tie (Spain/UK/Netherlands/France). Only Spain
+                    won the previous year (1968), so only Spain satisfies the consecutive-win
+                    condition. The query handles this correctly via Country node identity.
+
+    1973 Luxembourg: Won 1972 ("Apres toi", Edinburgh) → hosted 1973 Luxembourg city → won 1973 ("Tu te reconnaitras") ✓
+
+    1979 Israel:    Won 1978 ("A-Ba-Ni-Bi", Paris) → hosted 1979 Jerusalem (Israel) → won 1979 ("Hallelujah") ✓
+
+    1993 Ireland:   Won 1992 ("Why Me?", Malmo) → hosted 1993 Millstreet (Ireland) → won 1993 ("In Your Eyes") ✓
+
+    1994 Ireland:   Won 1993 ("In Your Eyes", Millstreet) → hosted 1994 Dublin (Ireland) → won 1994 ("Rock 'n' Roll Kids") ✓
+
+3.3 Rule-break years (actual host ≠ previous year's winner):
+
+    The hosting rule breaks when a winning country declines or is unable to host
+    and another broadcaster steps in. Determined by mapping each host city to its
+    country and comparing against the prior year's winner:
+
+    | Year | Host city  | Actual host     | Expected host (prev winner) | Historical reason                          |
+    |------|------------|-----------------|-----------------------------|--------------------------------------------|
+    | 1957 | Frankfurt  | Germany         | Switzerland (1956)          | Switzerland declined; Germany deputised    |
+    | 1960 | London     | United Kingdom  | Netherlands (1959)          | Netherlands passed hosting to UK           |
+    | 1963 | London     | United Kingdom  | France (1962)               | France declined; UK hosted again           |
+    | 1972 | Edinburgh  | United Kingdom  | Monaco (1971)               | Monaco lacked broadcasting infrastructure  |
+    | 1974 | Brighton   | United Kingdom  | Luxembourg (1973)           | Luxembourg declined due to cost            |
+    | 1980 | The Hague  | Netherlands     | Israel (1979)               | Israel declined (cost/conflict concerns)   |
+    | 2023 | Liverpool  | United Kingdom  | Ukraine (2022)              | Ukraine at war; UK hosted on their behalf  |
+
+3.4 Does the query silently fail for any rule-break year?
+
+    No. For a silent failure to occur, the same country would need to have won
+    in both Year N-1 and Year N in a rule-break year, which would cause the query
+    to return a false positive (a "host winner" that did not actually host).
+    Verified exhaustively against the CSV:
+
+    | Rule-break year | Prev winner    | Actual year winner | Same country? | Silent failure? |
+    |-----------------|----------------|--------------------|---------------|-----------------|
+    | 1957            | Switzerland    | Netherlands        | No            | None            |
+    | 1960            | Netherlands    | France             | No            | None            |
+    | 1963            | France         | Denmark            | No            | None            |
+    | 1972            | Monaco         | Luxembourg         | No            | None            |
+    | 1974            | Luxembourg     | Sweden             | No            | None            |
+    | 1980            | Israel         | Ireland            | No            | None            |
+    | 2023            | Ukraine        | Sweden             | No            | None            |
+
+    In every rule-break year the prior winner and the actual winner are different
+    countries, so the y2.year = y1.year + 1 + same-Country constraint matches
+    zero rows — which is empirically correct (no actual host winner existed).
+
+    One structural limitation exists independent of rule-break years: the query
+    uses y2.year = y1.year + 1, which cannot bridge the 2020 COVID cancellation
+    gap (2019 → 2021). If the 2019 winner (Netherlands) had also won in 2021,
+    the query would silently miss it because 2021 ≠ 2019 + 1. Since Italy won
+    2021, this limitation has no impact on the actual results.
 
 ---
 
