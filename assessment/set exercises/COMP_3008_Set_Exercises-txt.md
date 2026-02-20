@@ -112,6 +112,24 @@ Q: "Produce a Neo4j query to list all the countries that have won the competitio
     RETURN Country, Wins
     ORDER BY Wins DESC
 
+2.1 Result (13 rows):
+
+    | Country        | Wins |
+    |----------------|------|
+    | ireland        | 7    |
+    | sweden         | 7    |
+    | netherlands    | 5    |
+    | france         | 5    |
+    | luxembourg     | 5    |
+    | united kingdom | 5    |
+    | israel         | 4    |
+    | switzerland    | 3    |
+    | denmark        | 3    |
+    | italy          | 3    |
+    | austria        | 3    |
+    | norway         | 3    |
+    | ukraine        | 3    |
+
 ---
 
 SET-EXERCISE 3.
